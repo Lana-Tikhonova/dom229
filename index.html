@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Торговый комплекс «Елисаветинский»</title>
+
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+
+    <!-- шрифты -->
+    <link rel="preload" href="assets/fonts/RFDewi-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/RFDewi-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/RFDewi-Semibold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/RFDewi-Ultrabold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/RFDewiCondensed-Semibold.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="vendors/bootstrap5/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="vendors/plyr/plyr.css">
+    <link rel="stylesheet" href="vendors/tippy/scale.css" />
+    <link rel="stylesheet" href="vendors/animate/aos.min.css">
+    <link rel="stylesheet" href="assets/css/bundle.min.css?v=1">
+
+
+    <script src="https://api-maps.yandex.ru/3.0/?apikey=4c7e2233-a854-4da5-9483-7a55bd41dfc3&lang=ru_RU"
+        type="text/javascript"></script>
+    <script src="assets/js/map.js?1" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class='overlay'></div>
+    <header class="header">
+        <div class="container">
+            <div class='bnn_block'>
+                <div class="content">
+                    <div class='caption'>ТОРГОВЫЙ КОМПЛЕКС</div>
+                    <div class='title'>"ЕЛИСАВЕТИНСКИЙ"</div>
+                    <div class='text'>Строительные и отделочные материалы</div>
+                </div>
+                <div class='imgs'>
+                    <picture>
+                        <source media="(min-width:992px)" srcset="assets/imgs/bnn_img_left.png">
+                        <img src="assets/imgs/bnn_img_left_mobile.png" alt="" data-aos="zoom-in">
+                    </picture>
+                    <picture>
+                        <source media="(min-width:992px)" srcset="assets/imgs/bnn_img_right.png">
+                        <img src="assets/imgs/bnn_img_right_mobile.png" alt="" data-aos="zoom-in">
+                    </picture>
+                </div>
+            </div>
+
+            <div class="header_top">
+                <a href="javascript:void(0)" class='header_logo me-auto me-lg-0'>
+                    <img src="assets/imgs/logo.svg" alt="">
+                    <div class="text">ЕЛИСАВЕТИНСКИЙ</div>
+                </a>
+                <nav class='nav-list_wrapper d-none d-lg-block'>
+                    <ul class='nav-list'>
+                        <li class="dd_menu">
+                            <button class="dd_menu_btn" type="button">
+                                <div class='icon'><span></span></div>
+                                <span class='text'>Меню</span>
+                                <span class='text'>Закрыть</span>
+                            </button>
+                            <ul class="nav-list_dropdown"></ul>
+                        </li>
+                        <li class='nav-item'>
+                            <a href="javascript:void(0)" class='nav-link'>Новости и акции</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a href="javascript:void(0)" class='nav-link'>О торговом комплексе</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a href="javascript:void(0)" class='nav-link'>Карта территории</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a href="javascript:void(0)" class='nav-link'>Доставка и оплата</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a href="javascript:void(0)" class='nav-link'>Вакансии</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a href="javascript:void(0)" class='nav-link'>Бренды</a>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="tel:+7 (925) 752-42-44" class='btn btn_blue header_phone'>
+                    <svg class="icon w-24 -white">
+                        <use xlink:href="./assets/imgs/sprite.svg#phone"></use>
+                    </svg>
+                    <span class='d-none d-md-block'>+7 (925) 752-42-44</span>
+                </a>
+                <div class="mobile_menu_btn d-lg-none">
+                    <div class='icon'><span></span></div>
+                    <span class='text'>Меню</span>
+                    <span class='text'>Закрыть</span>
+                </div>
+
+                <div class='mobile_menu'>
+                    <div class='header_search_wrapper d-block d-md-none'>
+                        <form class="header_search" method="get" action="#">
+                            <input type="text" name="search_mob" id="search_mob" placeholder="Поиск на сайте" value=""
+                                class="header_search_input">
+                            <a href="javascript:;" class="header_search_btn">
+                                <svg class="icon w-24 -black">
+                                    <use xlink:href="./assets/imgs/sprite.svg#search"></use>
+                                </svg>
+                            </a>
+                        </form>
+                        <div class='header_search_result'>
+                            <div class='count'>Найдено совпадений: 256</div>
+                            <ul>
+                                <li>
+                                    <div>
+                                        <div class='name'>ИП Авакян А.</div>
+                                        <div class='text'>Все для строительства</div>
+                                    </div>
+                                    <a href="javascript:void(0)" class='link'>Перейти</a>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class='name'>ИП Авакян А.</div>
+                                        <div class='text'>Строительные
+                                            материалы</div>
+                                    </div>
+                                    <a href="javascript:void(0)" class='link'>Перейти</a>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class='name'>ИП Авакян А.</div>
+                                        <div class='text'>Террасная доска МПК 25х140х3000 мм (тисн. и
+                                            браш./цвет-шоколад)
+                                        </div>
+                                    </div>
+                                    <a href="javascript:void(0)" class='link'>Перейти</a>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class='name'>ИП Авакян А.</div>
+                                        <div class='text'>ИП Авакян А.</div>
+                                    </div>
+                                    <a href="javascript:void(0)" class='link'>Перейти</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <nav class='menu'>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)">Новости и акции</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">О торговом комплексе</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Карта территории</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Доставка и оплата</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Вакансии</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Бренды</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Калькулятор</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a href="javascript:void(0)" class='btn btn_yellow'>
+                        Аренда
+                        <svg class="icon w-24 -black">
+                            <use xlink:href="./assets/imgs/sprite.svg#arenda"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class='header_bottom'>
+                <div class="btn btn_red header_catalog_btn ">
+                    Каталог товаров
+                    <svg class="icon w-24 -white">
+                        <use xlink:href="./assets/imgs/sprite.svg#catalog"></use>
+                    </svg>
+                </div>
+                <div class='header_search_wrapper d-none d-md-block'>
+                    <form class="header_search " method="get" action="#">
+                        <input type="text" name="search_desk" id="search" placeholder="Поиск на сайте" value=""
+                            class="header_search_input">
+                        <a href="javascript:;" class="header_search_btn">
+                            <svg class="icon w-24 -black">
+                                <use xlink:href="./assets/imgs/sprite.svg#search"></use>
+                            </svg>
+                        </a>
+                    </form>
+                    <div class='header_search_result'>
+                        <div class='count'>Найдено совпадений: 256</div>
+                        <ul>
+                            <li>
+                                <div>
+                                    <div class='name'>ИП Авакян А.</div>
+                                    <div class='text'>Все для строительства</div>
+                                </div>
+                                <a href="javascript:void(0)" class='link'>Перейти</a>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class='name'>ИП Авакян А.</div>
+                                    <div class='text'>Строительные
+                                        материалы</div>
+                                </div>
+                                <a href="javascript:void(0)" class='link'>Перейти</a>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class='name'>ИП Авакян А.</div>
+                                    <div class='text'>Террасная доска МПК 25х140х3000 мм (тисн. и браш./цвет-шоколад)
+                                    </div>
+                                </div>
+                                <a href="javascript:void(0)" class='link'>Перейти</a>
+                            </li>
+                            <li>
+                                <div>
+                                    <div class='name'>ИП Авакян А.</div>
+                                    <div class='text'>ИП Авакян А.</div>
+                                </div>
+                                <a href="javascript:void(0)" class='link'>Перейти</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class='btn btn_header d-none d-lg-flex'>Калькулятор</a>
+                <a href="javascript:void(0)" class='btn btn_yellow d-none d-lg-flex'>
+                    Аренда
+                    <svg class="icon w-24 -black">
+                        <use xlink:href="./assets/imgs/sprite.svg#arenda"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- баннер -->
+        <section class='section pt-0'>
+            <div class="container">
+                <div class='index_slider_wrapper' data-aos="fade-up">
+                    <div class="swiper index_slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="item">
+                                    <div class="bg">
+                                        <img data-src="./assets/imgs/img.jpg" alt="" class='lazyload'>
+                                    </div>
+                                    <div class="content_top">
+                                        <div class="text">Торговый комплекс “Елисаветинский”</div>
+                                        <div class="text">Акция действует с 01.01.2026 — 31.12.2026</div>
+                                    </div>
+                                    <div class="content">
+                                        <h2>С нами легко делать покупки</h2>
+                                        <div class="text">всё для строительства и ремонта в одном месте</div>
+                                        <a href="javascript:void(0)" class='btn btn_green'>
+                                            Лучшие предложения
+                                            <svg class="icon w-24 -yellow">
+                                                <use xlink:href="./assets/imgs/sprite.svg#star"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class='content_bottom'>01</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item">
+                                    <div class="bg">
+                                        <img data-src="./assets/imgs/img.jpg" alt="" class='lazyload'>
+                                    </div>
+                                    <div class="content_top">
+                                        <div class="text">Торговый комплекс “Елисаветинский”</div>
+                                        <div class="text">Акция действует с 01.01.2026 — 31.12.2026</div>
+                                    </div>
+                                    <div class="content">
+                                        <h2>С нами легко делать покупки</h2>
+                                        <div class="text">всё для строительства и ремонта в одном месте. всё для
+                                            строительства и ремонта в одном месте.</div>
+                                        <a href="javascript:void(0)" class='btn btn_green'>
+                                            Лучшие предложения
+                                            <svg class="icon w-24 -yellow">
+                                                <use xlink:href="./assets/imgs/sprite.svg#star"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class='content_bottom'>02</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev">
+                        <svg class="icon w-24 -green">
+                            <use xlink:href="./assets/imgs/sprite.svg#arrow_left"></use>
+                        </svg>
+                    </div>
+                    <div class="swiper-button-next">
+                        <svg class="icon w-24 -green">
+                            <use xlink:href="./assets/imgs/sprite.svg#arrow_right"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class='card_slider_wrapper'>
+                <div class='container'>
+                    <div class='swiper card_slider'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="img"><img data-src="./assets/imgs/img_1.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class="content">
+                                        <h6 class='title'>Широкий<br>
+                                            ассортимент</h6>
+                                        <div class="text">Большой выбор товаров для строительства и ремонта. </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="img"><img data-src="./assets/imgs/img_2.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class="content">
+                                        <h6 class='title'>Программа<br>
+                                            скидок</h6>
+                                        <div class="text">Выгодные предложения и специальные условия для постоянных
+                                            клиентов
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="img"><img data-src="./assets/imgs/img_3.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class="content">
+                                        <h6 class='title'>Консультации<br> профессионалов</h6>
+                                        <div class="text">Поможем подобрать материалы под ваши задачи и бюджет</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="img"><img data-src="./assets/imgs/img_4.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class="content">
+                                        <h6 class='title'>Товары<br>
+                                            под заказ</h6>
+                                        <div class="text">Закажем нужные позиции под конкретный проект и сроки</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- каталог -->
+        <section class='section'>
+            <div class="container">
+                <div class='section_title'>
+                    <h2 data-aos="fade">Каталог товаров</h2>
+                    <div class="text" data-aos="fade">Мы предоставляем торговые площади для большого числа
+                        предпринимателей и
+                        предприятий,
+                        создавая тем самым выгодную для покупателей конкурентную среду.</div>
+                </div>
+            </div>
+            <div class='slider_wrapper'>
+                <div class='container'>
+                    <div class='swiper catalog_slider slider'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Строительные
+                                        материалы</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_1.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Отделочные
+                                        материалы</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_2.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Инструмент
+                                        и&nbsp;крепёж</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_3.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Мебель</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_4.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Сантехника
+                                        и&nbsp;канализация</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_5.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Услуги</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_6.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Электротовары</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_7.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Вентиляция</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_8.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Спорт и отдых</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_9.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Кафе</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_10.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Автозапчасти</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_11.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0)" class="item" data-aos="fade-up">
+                                    <h4>Сад и огород</h4>
+                                    <div class="img"><img data-src="./assets/imgs/image_12.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='btn btn_green'>Перейти в раздел</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev">
+                            <svg class="icon w-24 -green">
+                                <use xlink:href="./assets/imgs/sprite.svg#arrow_left"></use>
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next">
+                            <svg class="icon w-24 -green">
+                                <use xlink:href="./assets/imgs/sprite.svg#arrow_right"></use>
+                            </svg>
+                        </div>
+                        <div class='swiper-pagination'></div>
+                    </div>
+                </div>
+            </div>
+            <div class='container'>
+                <div class='d-flex justify-content-center mt-4 pt-md-3'><a data-aos="fade-up" href="javascript:void(0)"
+                        class='section_link'>Весь
+                        Каталог</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- лучшее предложение -->
+        <section class='section'>
+            <div class="container">
+                <div class='section_title'>
+                    <h2 data-aos="fade">Лучшие предложения</h2>
+                    <div class="text" data-aos="fade">Мы предоставляем торговые площади для большого числа
+                        предпринимателей и
+                        предприятий,
+                        создавая тем самым выгодную для покупателей конкурентную среду.</div>
+                </div>
+            </div>
+            <div class='slider_wrapper'>
+                <div class='container'>
+                    <div class='swiper product_slider slider'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="item" data-aos="fade-up">
+                                    <div class="img"><img data-src="./assets/imgs/img_5.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='content'>
+                                        <div class="title">Террасная доска МПК 25х140х3000 мм (тисн. и
+                                            браш./цвет-шоколад)
+                                        </div>
+                                        <div class="code">Артикул: 00-00020762</div>
+                                        <div class="price">1650 ₽/шт.</div>
+                                        <a href="javascript:void(0)" class="btn btn_green">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item" data-aos="fade-up">
+                                    <div class="img"><img data-src="./assets/imgs/img_5.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='content'>
+                                        <div class="title">Террасная доска МПК 25х140х3000 мм (тисн. и
+                                            браш./цвет-шоколад) Террасная доска МПК 25х140х3000 мм (тисн. и
+                                            браш./цвет-шоколад)
+                                        </div>
+                                        <div class="code">Артикул: 00-00020762</div>
+                                        <div class="price">1650 ₽/шт.</div>
+                                        <a href="javascript:void(0)" class="btn btn_green">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item" data-aos="fade-up">
+                                    <div class="img"><img data-src="./assets/imgs/img_5.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='content'>
+                                        <div class="title">Террасная доска
+                                        </div>
+                                        <div class="code">Артикул: 00-00020762</div>
+                                        <div class="price">1650 ₽/шт.</div>
+                                        <a href="javascript:void(0)" class="btn btn_green">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item" data-aos="fade-up">
+                                    <div class="img"><img data-src="./assets/imgs/img_5.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='content'>
+                                        <div class="title">Террасная доска МПК 25х140х3000 мм (тисн. и
+                                            браш./цвет-шоколад)
+                                        </div>
+                                        <div class="code">Артикул: 00-00020762</div>
+                                        <div class="price">1650 ₽/шт.</div>
+                                        <a href="javascript:void(0)" class="btn btn_green">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item" data-aos="fade-up">
+                                    <div class="img"><img data-src="./assets/imgs/img_5.png" alt="" class='lazyload'>
+                                    </div>
+                                    <div class='content'>
+                                        <div class="title">Террасная доска МПК 25х140х3000 мм (тисн. и
+                                            браш./цвет-шоколад)
+                                        </div>
+                                        <div class="code">Артикул: 00-00020762</div>
+                                        <div class="price">1650 ₽/шт.</div>
+                                        <a href="javascript:void(0)" class="btn btn_green">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev" data-aos="fade">
+                            <svg class="icon w-24 -green">
+                                <use xlink:href="./assets/imgs/sprite.svg#arrow_left"></use>
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next" data-aos="fade">
+                            <svg class="icon w-24 -green">
+                                <use xlink:href="./assets/imgs/sprite.svg#arrow_right"></use>
+                            </svg>
+                        </div>
+                        <div class='swiper-pagination' data-aos="fade"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- новости -->
+        <section class='section'>
+            <div class="container">
+                <div class='section_title'>
+                    <h2 data-aos="fade">Новости и акции</h2>
+                    <div class="text" data-aos="fade">Мы предоставляем торговые площади для большого числа
+                        предпринимателей и
+                        предприятий,
+                        создавая тем самым выгодную для покупателей конкурентную среду.</div>
+                </div>
+                <div class='news_list row'>
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="content">
+                                <div class="top">
+                                    <div class="label">Новости</div>
+                                    <div class="date">30.07.2025</div>
+                                </div>
+                                <div class="title">Магазин строительных инструментов WADFOW и INECO</div>
+                                <div class="link">Перейти</div>
+                            </div>
+                            <div class="img"><img data-src="./assets/imgs/news_img_1.png" alt="" class='lazyload'></div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="content">
+                                <div class="top">
+                                    <div class="label">Акции</div>
+                                    <div class="date">30.07.2025</div>
+                                </div>
+                                <div class="title">Жигулевские раки! 
+                                    Вкусная точка на карте ТК Елисаветинский</div>
+                                <div class="link">Перейти</div>
+                            </div>
+                            <div class="img"><img data-src="./assets/imgs/news_img_2.png" alt="" class='lazyload'></div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="content">
+                                <div class="top">
+                                    <div class="label">Статьи</div>
+                                    <div class="date">30.07.2025</div>
+                                </div>
+                                <div class="title">Магазин автомобильных аксессуаров и запчастей "Сова" рад сообщить о
+                                    своем открытии!)</div>
+                                <div class="link">Перейти</div>
+                            </div>
+                            <div class="img"><img data-src="./assets/imgs/news_img_3.png" alt="" class='lazyload'></div>
+                        </a>
+                    </div>
+                </div>
+                <div class='d-flex justify-content-center mt-4 pt-md-3'><a data-aos="fade-up" href="javascript:void(0)"
+                        class='section_link'>Все Новости</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- о тк -->
+        <section class='section'>
+            <div class="container">
+                <h2 data-aos="fade">О торговом комплексе</h2>
+                <div class='about_block'>
+                    <div class='content' data-aos="fade-up">
+                        <img src="./assets/imgs/logo_bg.png" alt="" class='bg'>
+                        <div class='title'>
+                            <h4>Торговый комплекс<br>
+                                «Елисаветинский»</h4>
+                            <div class='img'><img data-src="./assets/imgs/logo.png" alt="" class='lazyload'></div>
+                        </div>
+                        <div class="text">
+                            <p>Если вы всё ещё ищете Елисаветинский рынок в Подольске, то знайте, что он уже
+                                трансформировался в одноимённый торговый комплекс. Мы полностью преобразили и
+                                благоустроили
+                                5 га территории, построили удобные современные павильоны, наладили достойный сервис для
+                                работников и покупателей. </p>
+
+                            <p>Мы благодарны многочисленным предпринимателям, без участия которых бывший строительный
+                                рынок
+                                в Подольске не стал бы тем, что вы можете видеть сейчас.</p>
+                        </div>
+                    </div>
+                    <div class='about_slider_wrapper' data-aos="fade-up" data-aos-delay="200">
+                        <div class="swiper about_slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <img data-src="./assets/imgs/gallery_img_2.jpg" alt="" class='lazyload'>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <img data-src="./assets/imgs/gallery_img_1.png" alt="" class='lazyload'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='swiper-pagination'></div>
+                        </div>
+                        <div class="swiper-button-prev">
+                            <svg class="icon w-24 -green">
+                                <use xlink:href="./assets/imgs/sprite.svg#arrow_left"></use>
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next">
+                            <svg class="icon w-24 -green">
+                                <use xlink:href="./assets/imgs/sprite.svg#arrow_right"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class='d-flex justify-content-center mt-4 pt-md-3'><a data-aos="fade-up" href="javascript:void(0)"
+                        class='section_link'>Подробнее</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- max -->
+        <section class='section'>
+            <div class="container">
+                <div class="messenger_block">
+                    <div class="content" data-aos="fade-left">
+                        <div class="title">Есть вопрос или проблема? <br>
+                            Мы отвечаем быстро — и держим вас в курсе.</div>
+                        <div class="text">Вопросы по товарам и павильонам —<br>
+                            пишите в чат, подскажем и сориентируем</div>
+                        <ul class='list'>
+                            <li>«Где купить кран?»</li>
+                            <li>«Все для ремонта»</li>
+                            <li>«Запчасти для иномарок»</li>
+                        </ul>
+                        <a href="javascript:void(0)" class="btn">
+                            <span>Написать в MAX</span>
+                            <div class='icon'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23"
+                                    fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.7216 22.8845C9.46931 22.8845 8.42265 22.5543 6.60333 21.2334C5.45253 22.7194 1.80839 23.8807 1.64946 21.8939C1.64946 20.4024 1.32066 19.142 0.948021 17.7661C0.504158 16.0709 0 14.1831 0 11.4478C0 4.91484 5.33747 0 11.6613 0C17.9906 0 22.95 5.157 22.95 11.5083C22.9712 17.7614 17.9476 22.8512 11.7216 22.8845ZM11.8147 5.64683C8.73502 5.48723 6.33479 7.62819 5.80325 10.9855C5.36485 13.7649 6.14301 17.1497 6.80607 17.3258C7.12391 17.4028 7.92399 16.7534 8.42265 16.2525C9.24724 16.8247 10.2075 17.1683 11.2065 17.2487C14.3976 17.4029 17.1243 14.9629 17.3385 11.7615C17.4632 8.55328 15.0063 5.83594 11.8147 5.65234V5.64683Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                    <div class='img' data-aos="zoom-in">
+                        <img data-src="./assets/imgs/MAX_logo.png" alt="" class='lazyload'>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- карта -->
+        <section class='section'>
+            <div class="container">
+                <h2 data-aos="fade">Мы на карте</h2>
+                <div class="map_block">
+                    <div class="content" data-aos="fade-up">
+                        <div class='contacts_list'>
+                            <div class="item">
+                                <div class='title'>Адрес:</div>
+                                <div class="text">г. Подольск, ул. Большая Серпуховская д.229</div>
+                            </div>
+                            <div class="item">
+                                <div class='title'>График работы:</div>
+                                <div class="text">Пн-Сб с 9:00 до 20:00 <br>
+                                    Вс - до 18:00</div>
+                            </div>
+                            <div class="item">
+                                <div class='title'>Электронная почта:</div>
+                                <a href="mailto:dom229@mail.ru" class="text">dom229@mail.ru</a>
+                            </div>
+                            <div class="item">
+                                <div class='title'>Телефон:</div>
+                                <a href="tel:+7 (925) 752-42-44" class="text">+7 (925) 752-42-44</a>
+                            </div>
+                        </div>
+                        <div class="btn btn_blue">
+                            <svg class="icon w-24 -white">
+                                <use xlink:href="./assets/imgs/sprite.svg#phone"></use>
+                            </svg>
+                            Связаться с нами
+                        </div>
+                    </div>
+                    <div class="map_wrapper" data-aos="fade-up" data-aos-delay="200">
+                        <div class="map" id="map"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class='footer_block'>
+                <div class='footer_item footer_info'>
+                    <a href="/" class="footer_logo">
+                        <img src="assets/imgs/logo.svg" alt="">
+                        <div>
+                            <div class="text">Торговый комплекс</div>
+                            <div class='title'>ЕЛИСАВЕТИНСКИЙ</div>
+                            <div class='text'>Строительные и отделочные материалы</div>
+                        </div>
+                    </a>
+
+                    <div class='mailing_block'>
+                        <div class="title">Будьте в курсе новостей</div>
+                        <div class="text">Акции скидки распродажи ждут!</div>
+                        <form action="" class="">
+                            <input type="email" class="mailing_input" name="email" placeholder="Введите E-mail">
+                            <button type="submit" class="btn btn_green">Подписаться</button>
+                        </form>
+                    </div>
+
+                    <div class='social_block'>
+                        <div class="title">Следите за нами в соц. сетях</div>
+                        <ul>
+                            <li><a href="javascript:void(0)"><img src="assets/imgs/social/vk.svg" alt=""></a></li>
+                            <li><a href="javascript:void(0)"><img src="assets/imgs/social/tg.svg" alt=""></a></li>
+                            <li><a href="javascript:void(0)"><img src="assets/imgs/social/ok.svg" alt=""></a></li>
+                            <li><a href="javascript:void(0)"><img src="assets/imgs/social/rutube.svg" alt=""></a></li>
+                            <li><a href="javascript:void(0)"><img src="assets/imgs/social/max.svg" alt=""></a></li>
+                        </ul>
+                    </div>
+
+                    <div class='d-none d-xl-block'>
+                        <div class='terms'>
+                            Вы принимаете условия <a href="javascript:void(0)">политики в отношении обработки
+                                персональных
+                                данных</a> и <a href="javascript:void(0)">пользовательского соглашения</a> каждый раз,
+                            когда оставляете
+                            свои данные в любой форме обратной связи на сайте
+                            dom229.ru
+                        </div>
+                        <div class='copyright'>©2026. dom229.ru</div>
+                    </div>
+                </div>
+                <div class='footer_menu_list'>
+                    <div class='footer_menu_col'>
+                        <ul class='footer_menu'>
+                            <li>
+                                <div class="title">
+                                    Каталог товаров
+                                    <svg class="icon w-24">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+                                <ul class='footer_submenu'>
+                                    <li><a href="javascript:void(0)">Строительные материалы</a></li>
+                                    <li><a href="javascript:void(0)">Отделочные материалы</a></li>
+                                    <li><a href="javascript:void(0)">Инструмент и крепёж</a></li>
+                                    <li><a href="javascript:void(0)">Мебель и декор</a></li>
+                                    <li><a href="javascript:void(0)">Сантехника и канализация</a></li>
+                                    <li><a href="javascript:void(0)">Вентиляция</a></li>
+                                    <li><a href="javascript:void(0)">Электротовары</a></li>
+                                    <li><a href="javascript:void(0)">Спорт и отдых</a></li>
+                                    <li><a href="javascript:void(0)">Кафе</a></li>
+                                    <li><a href="javascript:void(0)">Автозапчасти</a></li>
+                                    <li><a href="javascript:void(0)">Сад и огород</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='footer_menu_col'>
+                        <ul class='footer_menu'>
+                            <li>
+                                <div class="title">
+                                    О комплексе
+                                    <svg class="icon w-24">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+                                <ul class='footer_submenu'>
+                                    <li><a href="javascript:void(0)">Новости и акции</a></li>
+                                    <li><a href="javascript:void(0)">Карта территории</a></li>
+                                    <li><a href="javascript:void(0)">Контакты</a></li>
+                                    <li><a href="javascript:void(0)">Фотогалерея</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="title">Работа у нас</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="title">Калькулятор цен</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="title">Бренды</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='footer_menu_col'>
+                        <ul class='footer_menu'>
+                            <li>
+                                <div class="title">
+                                    Услуги
+                                    <svg class="icon w-24">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+                                <ul class='footer_submenu footer_submenu_collapsed'>
+                                    <li><a href="javascript:void(0)">Строительство домов и бань</a></li>
+                                    <li><a href="javascript:void(0)">Автосервис</a></li>
+                                    <li><a href="javascript:void(0)">Ремонт и прокат инструмента</a></li>
+                                    <li><a href="javascript:void(0)">Изготовление металлических
+                                            конструкций</a></li>
+                                    <!-- показываю 4, остальные скрываю -->
+                                    <li><a href="javascript:void(0)">Электротовары</a></li>
+                                    <li><a href="javascript:void(0)">Спорт и отдых</a></li>
+                                    <li><a href="javascript:void(0)">Кафе</a></li>
+                                    <li><a href="javascript:void(0)">Автозапчасти</a></li>
+                                    <li><a href="javascript:void(0)">Сад и огород</a></li>
+                                </ul>
+                                <div class='footer_submenu_all'>
+                                    <span>Показать еще</span>
+                                    <span>Скрыть</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="title">Аренда торговых площадей</a>
+                            </li>
+                            <li>
+                                <div class='footer_menu_info'>
+                                    <span>По вопросам аренды</span>
+                                    <a href="tel:+7 (925) 752-42-44">+7 (925) 752-42-44</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class='d-block d-xl-none'>
+                    <div class='terms'>
+                        Вы принимаете условия <a href="javascript:void(0)">политики в отношении обработки персональных
+                            данных</a> и <a href="javascript:void(0)">пользовательского соглашения</a> каждый раз, когда
+                        оставляете
+                        свои данные в любой форме обратной связи на сайте
+                        dom229.ru
+                    </div>
+                    <div class='d-flex align-items-end justify-content-between'>
+                        <div class='copyright'>©2026. dom229.ru</div>
+                        <a href="javascript:void(0)" class='developer_block'>Дизайн и разработка<br>
+                            <span>Pavlenko</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class='developer_block d-none d-xl-block'>Дизайн и разработка<br>
+                    <span>Pavlenko</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="vendors/lazysizes/lazysizes.min.js"></script>
+    <script src="vendors/jquery/jquery-3.5.1.min.js"></script>
+    <!-- <script src="vendors/jquery/jquery-validation-1.19.5/jquery.validate.min.js"></script>
+    <script src="vendors/jquery/jquery-validation-1.19.5/additional-methods.js"></script>
+    <script src="vendors/jquery/jquery-validation-1.19.5/localization/messages_ru.js"></script> -->
+
+    <script src="vendors/animate/aos.min.js"></script>
+
+    <script src="vendors/bootstrap5/bootstrap.bundle.min.js"></script>
+    <script src="vendors/tippy/popper.min.js"></script>
+    <script src="vendors/tippy/tippy-bundle.umd.min.js"></script>
+    <script src="vendors/imask/imask.js"></script>
+    <script src="vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="vendors/plyr/plyr.polyfilled.js"></script>
+    <script src="src/js/common.js?v=1"></script>
+</body>
+
+</html>
