@@ -57,7 +57,7 @@ async function main() {
   // Создание маркера
   const markerElement = document.createElement('img');
   markerElement.className = 'my-marker';
-  markerElement.src = 'assets/imgs/marker.svg';
+  markerElement.src = '../imgs/marker.svg';
   markerElement.title = 'Маркер';
 
   // Создание заголовка маркера
@@ -71,18 +71,6 @@ async function main() {
   imgContainer.appendChild(markerElement);
   imgContainer.appendChild(markerTitle);
 
-  // // клик на маркер  
-  // markerElement.onclick = function () {
-  //   markerTitle.innerHTML = 'ЖК Golden City, Челюскина, 2';
-
-  //   if (imgContainer.classList.contains("show")) {
-  //     imgContainer.classList.remove("show")
-  //     markerTitle.innerHTML = '';
-  //   } else {
-  //     markerTitle.innerHTML = 'ЖК Golden City, Челюскина, 2';
-  //     imgContainer.classList.add("show")
-  //   }
-  // }
 
   // Добавление центра карты
   map.addChild(new YMapMarker({
