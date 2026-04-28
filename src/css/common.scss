@@ -1896,16 +1896,6 @@ label {
 			pointer-events: none;
 		}
 
-		&:hover:not(.is-animating) {
-			span {
-				opacity: 0;
-			}
-
-			.icon {
-				transform: translate(-50%, -50%);
-			}
-		}
-
 		&.is-animating {
 			outline: none;
 
@@ -1915,6 +1905,22 @@ label {
 
 			.icon {
 				animation: iconClickAnimation 3s forwards;
+			}
+		}
+	}
+}
+
+@media screen and (min-width:992px) {
+	.messenger_block {
+		.btn {
+			&:hover:not(.is-animating) {
+				span {
+					opacity: 0;
+				}
+
+				.icon {
+					transform: translate(-50%, -50%);
+				}
 			}
 		}
 	}
