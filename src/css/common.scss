@@ -1976,6 +1976,22 @@ label {
 	}
 }
 
+.marker_wrapper {
+	width: auto;
+	margin-top: -70px;
+	margin-left: -29px;
+	display: flex;
+	align-items: center;
+	min-width: 60px;
+	position: relative;
+}
+
+.my-marker {
+	width: 60px;
+	height: auto;
+	flex: 0 0 auto;
+}
+
 .contacts_list {
 	display: flex;
 	flex-direction: column;
