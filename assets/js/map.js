@@ -57,7 +57,7 @@ async function main() {
   // Создание маркера
   const markerElement = document.createElement('img');
   markerElement.className = 'my-marker';
-  markerElement.src = '../imgs/marker.svg';
+  markerElement.src = 'assets/imgs/marker.svg';
   markerElement.title = 'Маркер';
 
   // Создание заголовка маркера
