@@ -1891,11 +1891,12 @@ label {
 			align-items: center;
 			justify-content: center;
 			transform: translate(64px, -50%) scale(1);
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+			transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
 			pointer-events: none;
 		}
 
-		&:hover {
+		&:hover:not(.is-animating) {
 			span {
 				opacity: 0;
 			}
@@ -1905,9 +1906,8 @@ label {
 			}
 		}
 
-		&:focus {
+		&.is-animating {
 			outline: none;
-			pointer-events: none;
 
 			span {
 				animation: textReturn 3s forwards;
@@ -1923,17 +1923,14 @@ label {
 @keyframes textReturn {
 	0% {
 		opacity: 0;
-		// transform: scale(0.9);
 	}
 
 	80% {
 		opacity: 0;
-		// transform: scale(0.9);
 	}
 
 	100% {
 		opacity: 1;
-		// transform: scale(1);
 	}
 }
 

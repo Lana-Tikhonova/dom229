@@ -305,6 +305,18 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: window.innerWidth < 577 ? 0 : 100,
     });
 
+
+    const btnMAX = document.querySelector('.messenger_block .btn');
+
+    btnMAX.addEventListener('click', (e) => {
+        if (btnMAX.classList.contains('is-animating')) return;
+
+        btnMAX.classList.add('is-animating');
+        setTimeout(() => {
+            btnMAX.classList.remove('is-animating');
+        }, 3000);
+    });
+
     // // маска для телефона
     // const phoneInputs = document.querySelectorAll('.form_input[type="tel"]');
     // phoneInputs.forEach(input => {
