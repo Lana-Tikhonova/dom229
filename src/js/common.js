@@ -469,15 +469,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const btnMAX = document.querySelector('.messenger_block .btn');
+    if (btnMAX) {
+        btnMAX.addEventListener('click', (e) => {
+            if (btnMAX.classList.contains('is-animating')) return;
 
-    btnMAX.addEventListener('click', (e) => {
-        if (btnMAX.classList.contains('is-animating')) return;
+            btnMAX.classList.add('is-animating');
+            setTimeout(() => {
+                btnMAX.classList.remove('is-animating');
+            }, 3000);
+        });
+    }
 
-        btnMAX.classList.add('is-animating');
-        setTimeout(() => {
-            btnMAX.classList.remove('is-animating');
-        }, 3000);
-    });
+
 
     // // маска для телефона
     // const phoneInputs = document.querySelectorAll('.form_input[type="tel"]');
@@ -548,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // // слайдер картинок
+    // слайдер истории
     document.querySelectorAll('.history_slider_wrapper').forEach(wrapper => {
         const slider = wrapper.querySelector('.history_slider');
 
@@ -589,6 +592,51 @@ document.addEventListener('DOMContentLoaded', () => {
             // }
         });
     });
+
+
+    // слайдер услуг
+    document.querySelectorAll('.services_slider_block').forEach(wrapper => {
+        const slider = wrapper.querySelector('.services_slider');
+
+        new Swiper(slider, {
+            slidesPerView: 'auto',
+            spaceBetween: 24,
+            watchSlidesProgress: true,
+            watchOverflow: true,
+            speed: 600,
+            navigation: {
+                nextEl: wrapper.querySelector('.swiper-button-next'),
+                prevEl: wrapper.querySelector('.swiper-button-prev'),
+            },
+        });
+    });
+
+
+
+    $(document).on('click', '.copy_phone', function () {
+        const phoneNumber = $(this).closest('.phone').find('a').text().trim();
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(phoneNumber).then(() => {
+
+                $(this).addClass('copied');
+                setTimeout(() => $(this).removeClass('copied'), 2000);
+
+            }).catch(err => {
+                console.error('Ошибка при копировании: ', err);
+            });
+        } else {
+            // для старых браузеров
+            const $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(phoneNumber).select();
+            document.execCommand("copy");
+            $temp.remove();
+            $(this).addClass('copied');
+            setTimeout(() => $(this).removeClass('copied'), 2000);
+        }
+    });
+
 
 
 
