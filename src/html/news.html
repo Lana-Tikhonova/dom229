@@ -1,0 +1,173 @@
+@@include('partials/header.html', {
+"title": "Новости"
+})
+
+<!-- breadcrumb -->
+<section>
+    <div class="container">
+        <ul class="breadcrumb" data-aos="fade-in">
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index_icon">
+                    <svg class="icon w-24 -white">
+                        <use xlink:href="./assets/imgs/sprite.svg#arrow_long_left"></use>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index">
+                    Главная
+                </a>
+            </li>
+            <li>
+                <span class="breadcrumb_item">Новости</span>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- заголовок/описание, поиск-->
+<section class='section pt-0 pb-0'>
+    <div class="container">
+        <h1>Новости</h1>
+        <div class='section_text'>
+            <h5 class='w-100'>В разделе публикуются актуальные новости и обновления ТК «Елисаветинский». Здесь вы
+                найдёте информацию о
+                новых услугах, изменениях, полезных материалах и событиях.</h5>
+        </div>
+
+        <div class='search_block_wrapper'>
+            <form class="news_search search_block" method="get" action="#">
+                <input type="text" name="search_news" id="search_news" placeholder="Поиск по ключевым словам" value=""
+                    class="news_search_input search_block_input">
+                <a href="javascript:;" class="news_search_btn search_block_input_btn">
+                    <svg class="icon w-24 -black">
+                        <use xlink:href="./assets/imgs/sprite.svg#search"></use>
+                    </svg>
+                </a>
+            </form>
+            <div class="news_sort">
+                <button type="button" class="news_sort_btn">
+                    <span class="news_sort_label">Сортировать по дате</span>
+                    <svg class="icon w-24 -black">
+                        <use xlink:href="./assets/imgs/sprite.svg#sort"></use>
+                    </svg>
+                </button>
+                <ul class="news_sort_list">
+                    <li class="news_sort_item active" data-sort="date">По дате</li>
+                    <li class="news_sort_item" data-sort="popularity">По популярности</li>
+                    <li class="news_sort_item" data-sort="views">По просмотрам</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- новости -->
+<section class='section'>
+    <div class="container">
+        <div class='news_list row'>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Новости</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Магазин строительных инструментов WADFOW и INECO</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_1.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Акции</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Жигулевские раки! 
+                            Вкусная точка на карте ТК Елисаветинский</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_2.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Статьи</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Магазин автомобильных аксессуаров и запчастей "Сова" рад сообщить о
+                            своем открытии!)</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_3.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Статьи</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Магазин автомобильных аксессуаров и запчастей "Сова" рад сообщить о
+                            своем открытии!)</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_3.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Статьи</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Магазин автомобильных аксессуаров и запчастей "Сова" рад сообщить о
+                            своем открытии!)</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_3.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Статьи</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Магазин автомобильных аксессуаров и запчастей "Сова" рад сообщить о
+                            своем открытии!)</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_3.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4">
+                <a href="javascript:void(0)" class="item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content">
+                        <div class="top">
+                            <div class="label">Статьи</div>
+                            <div class="date">30.07.2025</div>
+                        </div>
+                        <div class="title">Магазин автомобильных аксессуаров и запчастей "Сова" рад сообщить о
+                            своем открытии!)</div>
+                        <div class="link">Перейти</div>
+                    </div>
+                    <div class="img"><img data-src="./assets/imgs/news_img_3.png" alt="" class='lazyload'></div>
+                </a>
+            </div>
+        </div>
+        <div class='d-flex justify-content-center mt-4 pt-md-3'><a data-aos="fade-up" href="javascript:void(0)"
+                class='section_link'>Все Новости</a>
+        </div>
+    </div>
+</section>
+
+
+@@include('partials/footer.html')

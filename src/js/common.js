@@ -613,29 +613,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    $(document).on('click', '.copy_phone', function () {
-        const phoneNumber = $(this).closest('.phone').find('a').text().trim();
+    const $sort = $('.news_sort');
+    const $trigger = $('.news_sort_btn');
+    const $list = $('.news_sort_list');
+    const $label = $('.news_sort_label');
 
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(phoneNumber).then(() => {
-
-                $(this).addClass('copied');
-                setTimeout(() => $(this).removeClass('copied'), 2000);
-
-            }).catch(err => {
-                console.error('Ошибка при копировании: ', err);
-            });
-        } else {
-            // для старых браузеров
-            const $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val(phoneNumber).select();
-            document.execCommand("copy");
-            $temp.remove();
-            $(this).addClass('copied');
-            setTimeout(() => $(this).removeClass('copied'), 2000);
-        }
+    // Переключение списка
+    $trigger.on('click', function (e) {
+        e.stopPropagation();
+        $list.toggleClass('is-active');
     });
+
+    // Выбор элемента
+    $('.news_sort_item').on('click', function () {
+        const text = $(this).text();
+        const val = $(this).data('sort');
+
+        $('.news_sort_item').removeClass('active');
+        $(this).addClass('active');
+
+        $label.text('Сортировать ' + text.toLowerCase());
+
+        $list.removeClass('is-active');
+
+        console.log('Sorting by:', val);
+    });
+
+    $(document).on('click', function () {
+        $list.removeClass('is-active');
+    });
+
 
 
 
