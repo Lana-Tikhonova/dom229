@@ -74,8 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Функция для закрытия всего
     function closeEverything() {
         $('.nav-list_dropdown').hide();
-        $('.dd_menu_btn, .nav-list,.mobile_menu_btn, .mobile_menu, .header_search, .header_search_result, .overlay, .nav-list').removeClass('active');
+        $('.dd_menu_btn, .nav-list,.mobile_menu_btn, .mobile_menu, .header_search, .header_search_result, .overlay, .nav-list, .header_catalog_btn, .catalog_dropdown, .header_calc_btn, .calculator_dropdown,.calculator_dropdown, header_calc_btn').removeClass('active');
     }
+
+    //закрытие  при клике на оверлей
+    $('.overlay').on('click', function (e) {
+        closeEverything();
+    });
+
+    // Esc
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            closeEverything();
+        }
+    });
+
 
     //показ не входивших пунктов меню на деске
     $(' .nav-list').on('click', '.dd_menu_btn', function (e) {
@@ -125,16 +138,160 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    //закрытие  при клике на оверлей
-    $('.overlay').on('click', function (e) {
+    // каталог
+    $('.header_catalog_btn').on('click', function (e) {
+        e.stopPropagation();
+        $(this).toggleClass('active');
+        $('.catalog_dropdown').toggleClass('active');
+
+        if ($(this).hasClass('active')) {
+            $('.overlay').addClass('active');
+        } else {
+            closeEverything();
+        }
+    });
+
+    // клик по основной категории
+    $('.catalog__header').on('click', function () {
+        const $item = $(this).closest('.catalog__item');
+        $item.toggleClass('is-active').find('> .catalog__content').slideToggle(250);
+
+        // $item.siblings('.is-active').removeClass('is-active')
+        //     .find('> .catalog__content').slideUp(300);
+    });
+
+    // клик по подкатегории 
+    $('.catalog__sub-row.has-children').on('click', '.catalog__sub-header', function (e) {
+        e.preventDefault();
+        const $row = $(this).closest('.catalog__sub-row');
+        $row.toggleClass('is-active').find('.catalog__sub-content').slideToggle(200);
+    });
+
+    // калькулятор
+    $('.header_calc_btn').on('click', function (e) {
+        e.stopPropagation();
+        $(this).toggleClass('active');
+        $('.calculator_dropdown').toggleClass('active');
+
+        if ($(this).hasClass('active')) {
+            $('.overlay').addClass('active');
+        } else {
+            closeEverything();
+        }
+    });
+
+    // открытие Выберите опцию
+    $('.calculator__select-header').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.calculator__select-content').slideToggle(300);
+    });
+
+    // логика внутренних аккордеонов 
+    $('.calculator__header').on('click', function (e) {
+        e.stopPropagation();
+        const parent = $(this).closest('.calculator__item');
+
+        // $('.calculator__item').not(parent).removeClass('is-active').find('.calculator__content').slideUp();
+
+        parent.toggleClass('is-active');
+        parent.find('.calculator__content').slideToggle(300);
+    });
+
+    // выбор подкатегории
+    $('.calculator__sub-item').on('click', function (e) {
+        e.stopPropagation();
+        const $currentContent = $(this).closest('.calculator__content');
+        $currentContent.find('.calculator__sub-item').removeClass('is-selected');
+        $(this).addClass('is-selected');
+
+        // разблок кнопку
+        $('#next-step').prop('disabled', false);
+    });
+
+    // переключение шагов
+    $('#next-step').on('click', function () {
+        $('#step-1').fadeOut(200, function () {
+            $('#step-2').fadeIn(200);
+        });
+    });
+
+    $('#prev-step').on('click', function () {
+        $('#step-2').fadeOut(200, function () {
+            $('#step-1').fadeIn(200);
+        });
+    });
+
+    // имитация стрелок input type="number"
+    $('.calculator__input-arrow_top').on('click', function () {
+        let input = $(this).closest('.calculator__input-number').find('input');
+        input.val(parseInt(input.val()) + 1).trigger('input');
+    });
+
+    $('.calculator__input-arrow_bottom').on('click', function () {
+        let input = $(this).closest('.calculator__input-number').find('input');
+        let min = parseInt(input.attr('min'));
+        let newVal = parseInt(input.val()) - 1;
+
+        if (newVal >= min) {
+            input.val(newVal).trigger('input');
+        }
+    });
+
+    // имитация select в калькуляторе
+    $(document).ready(function () {
+
+        // открытие/закрытие выпадающего списка
+        $('.calculator__select__dropdown-header').on('click', function (e) {
+            e.stopPropagation();
+
+            const $dropdown = $(this).closest('.calculator__select__dropdown');
+            const $list = $dropdown.find('.calculator__select__dropdown-list');
+
+            $('.calculator__select__dropdown-list').not($list).slideUp(200);
+            $('.calculator__select__dropdown').not($dropdown).removeClass('is-open');
+
+            $list.slideToggle(200);
+
+            const isVisible = $list.is(':visible');
+            $dropdown.toggleClass('is-open');
+        });
+
+        // выбор элемента из списка
+        $(document).on('click', '.calculator__select__dropdown-item', function () {
+            const $item = $(this);
+            const value = $item.data('value');
+            const text = $item.text();
+            const $dropdown = $item.closest('.calculator__select__dropdown');
+
+            $dropdown.find('.calculator__select__dropdown-current').text(text);
+
+            $dropdown.find('.calculator__select__dropdown-item').removeClass('is-selected');
+            $item.addClass('is-selected');
+
+            $dropdown.removeClass('is-open')
+            $dropdown.find('.calculator__select__dropdown-list').slideUp(200);
+
+            console.log('Выбран ID:', value);
+        });
+
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('.calculator__select__dropdown').length) {
+                $('.calculator__select__dropdown-list').slideUp(200);
+                $('.calculator__select__dropdown').removeClass('is-open');
+            }
+        });
+
+    });
+
+    // закрывам калькулятор
+    $('.calculator__close').on('click', function () {
         closeEverything();
     });
 
-    // Esc
-    $(document).on('keydown', function (e) {
-        if (e.keyCode === 27) {
-            closeEverything();
-        }
+    // pакрываем моб меню при открытии калькулятора
+    $('.mobile_menu .header_calc_btn').on('click', function () {
+        $('.mobile_menu_btn').removeClass('active')
+        $('.mobile_menu').removeClass('active');
     });
 
 
@@ -357,4 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //         }
     //     })
     // });
+
+
+
 })

@@ -175,7 +175,7 @@
                                 <a href="javascript:void(0)">Бренды</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Калькулятор</a>
+                                <div class='header_calc_btn'>Калькулятор</div>
                             </li>
                         </ul>
                     </nav>
@@ -189,11 +189,284 @@
             </div>
 
             <div class='header_bottom'>
-                <div class="btn btn_red header_catalog_btn ">
-                    Каталог товаров
-                    <svg class="icon w-24 -white">
-                        <use xlink:href="./assets/imgs/sprite.svg#catalog"></use>
-                    </svg>
+                <div class='header_catalog_wrapper'>
+                    <div class="btn btn_red header_catalog_btn ">
+                        Каталог товаров
+                        <svg class="icon w-24 -white">
+                            <use xlink:href="./assets/imgs/sprite.svg#catalog"></use>
+                        </svg>
+                    </div>
+
+                    <div class="catalog_dropdown">
+                        <div class="catalog">
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_1.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Строительные материалы</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+                                    <div class='catalog__sub-row'><a href="#" class="catalog__sub-header">Фундамент</a>
+                                    </div>
+
+                                    <div class="catalog__sub-row has-children">
+                                        <div class="catalog__sub-header">
+                                            <span>Стены</span>
+                                            <svg class="icon w-24 catalog__arrow -black">
+                                                <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="catalog__sub-content">
+                                            <a href="#" class="catalog__link-inner">Кирпич</a>
+                                            <a href="#" class="catalog__link-inner">Блоки</a>
+                                            <a href="#" class="catalog__link-inner">Брус</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="catalog__sub-row has-children">
+                                        <div class="catalog__sub-header">
+                                            <span>Перегородки</span>
+                                            <svg class="icon w-24 catalog__arrow -black">
+                                                <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="catalog__sub-content">
+                                            <a href="#" class="catalog__link-inner">Перегородка 1</a>
+                                        </div>
+                                    </div>
+                                    <div class="catalog__sub-row has-children">
+                                        <div class="catalog__sub-header">
+                                            <span>Кровля</span>
+                                            <svg class="icon w-24 catalog__arrow -black">
+                                                <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="catalog__sub-content">
+                                            <a href="#" class="catalog__link-inner">Кровля 1</a>
+                                            <a href="#" class="catalog__link-inner">Кровля 2</a>
+                                            <a href="#" class="catalog__link-inner">Кровля 3</a>
+                                        </div>
+                                    </div>
+
+                                    <div class='catalog__sub-row'><a href="#" class="catalog__sub-header">Двери</a>
+                                    </div>
+                                    <div class='catalog__sub-row'><a href="#" class="catalog__sub-header">Окна</a></div>
+                                    <div class='catalog__sub-row'><a href="#" class="catalog__sub-header">Лестницы</a>
+                                    </div>
+
+                                    <div class="catalog__sub-row has-children">
+                                        <div class="catalog__sub-header">
+                                            <span>Облицовка</span>
+                                            <svg class="icon w-24 catalog__arrow -black">
+                                                <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="catalog__sub-content">
+                                            <a href="#" class="catalog__link-inner">Облицовка 1</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_2.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Отделочные материалы</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+                                    <div class='catalog__sub-row'><a href="#" class="catalog__sub-header">Фундамент</a>
+                                    </div>
+                                    <div class="catalog__sub-row has-children">
+                                        <div class="catalog__sub-header">
+                                            <span>Перегородки</span>
+                                            <svg class="icon w-24 catalog__arrow -black">
+                                                <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="catalog__sub-content">
+                                            <a href="#" class="catalog__link-inner">Перегородка 1</a>
+                                        </div>
+                                    </div>
+
+                                    <div class='catalog__sub-row'><a href="#" class="catalog__sub-header">Двери</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_3.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Сантехника и канализация</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_4.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Вентиляция</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_5.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Автозапчасти</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_6.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Мебель</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_7.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Электротовары</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_8.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Кафе</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_9.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Инструмент и крепёж</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_10.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Услуги</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_11.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Спорт и отдых</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+                            <div class="catalog__item">
+                                <div class="catalog__header">
+                                    <div class="catalog__title-wrap">
+                                        <img data-src="./assets/imgs/catalog_img_12.png" alt=""
+                                            class="catalog__icon lazyload">
+                                        <span class="catalog__title">Сад и огород</span>
+                                    </div>
+                                    <svg class="icon w-24 catalog__arrow -black">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="catalog__content">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <div class='header_search_wrapper d-none d-md-block'>
                     <form class="header_search " method="get" action="#">
@@ -241,7 +514,186 @@
                         </ul>
                     </div>
                 </div>
-                <a href="javascript:void(0)" class='btn btn_header d-none d-lg-flex'>Калькулятор</a>
+                <div class='header_calc_wrapper'>
+                    <div class='btn header_calc_btn d-none d-lg-flex'>Калькулятор</div>
+
+                    <div class='calculator_dropdown'>
+                        <div class="calculator">
+                            <h3 class="calculator__main-title">Калькулятор</h3>
+
+                            <div class="calculator__step is-active" id="step-1">
+                                <p class="calculator__step-name">Шаг 1. Выбор расчёта</p>
+
+                                <div class="calculator__select-wrapper">
+                                    <div class="calculator__select-header">
+                                        <span>Выберите опцию</span>
+                                        <svg class="icon w-24 calculator__arrow -black">
+                                            <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                        </svg>
+                                    </div>
+
+                                    <div class="calculator__select-content">
+                                        <div class="calculator__list">
+                                            <div class="calculator__item">
+                                                <div class="calculator__header">
+                                                    <span class="calculator__title">Возведение стен и перегородок</span>
+                                                    <div class="calculator__icon">
+                                                        <svg class="icon -black">
+                                                            <use xlink:href="./assets/imgs/sprite.svg#plus">
+                                                            </use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="calculator__content">
+                                                    <div class="calculator__sub-list">
+                                                        <div class="calculator__sub-item" data-value="brick">Расчет
+                                                            материалов для стен из кирпича</div>
+                                                        <div class="calculator__sub-item" data-value="gas">Расчет
+                                                            материалов для стен из газобетона</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="calculator__item">
+                                                <div class="calculator__header">
+                                                    <span class="calculator__title">Пиломатериалы</span>
+                                                    <div class="calculator__icon">
+                                                        <svg class="icon -black">
+                                                            <use xlink:href="./assets/imgs/sprite.svg#plus">
+                                                            </use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="calculator__content">
+                                                    <div class="calculator__sub-list">
+                                                        <div class="calculator__sub-item" data-value="board">Доска</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="calculator__item">
+                                                <div class="calculator__header">
+                                                    <span class="calculator__title">Кровельные работы</span>
+                                                    <div class="calculator__icon">
+                                                        <svg class="icon -black">
+                                                            <use xlink:href="./assets/imgs/sprite.svg#plus">
+                                                            </use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="calculator__content">
+                                                    <div class="calculator__sub-list">
+                                                        <div class="calculator__sub-item" data-value="metal_roof">
+                                                            Металлочерепица</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="calculator__footer">
+                                    <button class="btn btn_green" id="next-step" disabled>Следующий
+                                        шаг</button>
+                                </div>
+                            </div>
+
+                            <div class="calculator__step " id="step-2" style="display: none;">
+                                <div class="calculator__step-name">Шаг 2. Результаты расчета</div>
+
+                                <div class="calculator__alert">
+                                    Результаты расчета калькулятора являются предварительными. <br>Для точного расчета
+                                    необходимых материалов свяжитесь с менеджером магазина по тел <a
+                                        href="tel:+7 (925) 752-42-44">+7 (925) 752-42-44</a>
+                                </div>
+                                <div class='calculator__label__title'>
+                                    <div class="calculator__label">Название</div>
+                                    <div class="calculator__label text-center">Общая площадь (м²)</div>
+                                    <div class="calculator__label text-center">Тип кладки</div>
+                                    <div class="calculator__label text-end">Общее количество (шт.)</div>
+                                </div>
+                                <div class="calculator__field__list">
+                                    <div class="calculator__field">
+                                        <div class="calculator__field__title">Название</div>
+                                        <div class="calculator__select__dropdown">
+                                            <div class="calculator__select__dropdown-header">
+                                                <span class="calculator__select__dropdown-current">Кирпич лицевой
+                                                    одинарный
+                                                    M-150 (цвет-красный) 250х120х65мм</span>
+                                                <svg class="icon w-24 calculator__select__dropdown-arrow -black">
+                                                    <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="calculator__select__dropdown-list">
+                                                <div class="calculator__select__dropdown-item" data-value="1">Кирпич
+                                                    лицевой
+                                                    одинарный
+                                                    M-150 (цвет-красный)
+                                                </div>
+                                                <div class="calculator__select__dropdown-item" data-value="2">Кирпич
+                                                    M-200
+                                                </div>
+                                                <div class="calculator__select__dropdown-item" data-value="3">
+                                                    лицевой
+                                                    одинарный
+                                                    M-150 (цвет-красный) 250х120х65мм
+                                                </div>
+                                                <div class="calculator__select__dropdown-item" data-value="4">
+                                                    M-200 250х120х65мм
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="calculator__field">
+                                        <div class="calculator__field__title">Общая площадь (м²)</div>
+                                        <div class='calculator__input-number'>
+                                            <input type="number" min="1" value="20">
+                                            <div class='calculator__input-arrow'>
+                                                <div class='calculator__input-arrow_top'></div>
+                                                <div class='calculator__input-arrow_bottom'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="calculator__field">
+                                        <div class="calculator__field__title">Тип кладки</div>
+                                        <div class="calculator__select__dropdown --type">
+                                            <div class="calculator__select__dropdown-header">
+                                                <span class="calculator__select__dropdown-current">Одинарная</span>
+                                                <svg class="icon w-24 calculator__select__dropdown-arrow -black">
+                                                    <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="calculator__select__dropdown-list">
+                                                <div class="calculator__select__dropdown-item" data-value="1">
+                                                    Двойная
+                                                </div>
+                                                <div class="calculator__select__dropdown-item" data-value="2">
+                                                    Тройная
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="calculator__field calculator__field--result">
+                                        <div class="calculator__field__title">Общее количество (шт.)</div>
+                                        <div class="calculator__val">1040</div>
+                                    </div>
+                                </div>
+
+                                <div class="calculator__total-block">
+                                    <div class="calculator__total-label">Итоговое количество материала</div>
+                                    <div class="calculator__total-val">1040 штук</div>
+                                </div>
+
+                                <div class="calculator__footer">
+                                    <button class="btn btn_grey" id="prev-step">К предыдущему
+                                        шагу</button>
+                                    <button class="btn btn_green calculator__close">Закрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <a href="javascript:void(0)" class='btn btn_yellow d-none d-lg-flex'>
                     Аренда
                     <svg class="icon w-24 -black">
