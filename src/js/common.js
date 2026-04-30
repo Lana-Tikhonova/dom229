@@ -238,49 +238,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // имитация select в калькуляторе
-    $(document).ready(function () {
+    // открытие/закрытие выпадающего списка
+    $('.calculator__select__dropdown-header').on('click', function (e) {
+        e.stopPropagation();
 
-        // открытие/закрытие выпадающего списка
-        $('.calculator__select__dropdown-header').on('click', function (e) {
-            e.stopPropagation();
+        const $dropdown = $(this).closest('.calculator__select__dropdown');
+        const $list = $dropdown.find('.calculator__select__dropdown-list');
 
-            const $dropdown = $(this).closest('.calculator__select__dropdown');
-            const $list = $dropdown.find('.calculator__select__dropdown-list');
+        $('.calculator__select__dropdown-list').not($list).slideUp(200);
+        $('.calculator__select__dropdown').not($dropdown).removeClass('is-open');
 
-            $('.calculator__select__dropdown-list').not($list).slideUp(200);
-            $('.calculator__select__dropdown').not($dropdown).removeClass('is-open');
+        $list.slideToggle(200);
 
-            $list.slideToggle(200);
+        const isVisible = $list.is(':visible');
+        $dropdown.toggleClass('is-open');
+    });
 
-            const isVisible = $list.is(':visible');
-            $dropdown.toggleClass('is-open');
-        });
+    // выбор элемента из списка
+    $(document).on('click', '.calculator__select__dropdown-item', function () {
+        const $item = $(this);
+        const value = $item.data('value');
+        const text = $item.text();
+        const $dropdown = $item.closest('.calculator__select__dropdown');
 
-        // выбор элемента из списка
-        $(document).on('click', '.calculator__select__dropdown-item', function () {
-            const $item = $(this);
-            const value = $item.data('value');
-            const text = $item.text();
-            const $dropdown = $item.closest('.calculator__select__dropdown');
+        $dropdown.find('.calculator__select__dropdown-current').text(text);
 
-            $dropdown.find('.calculator__select__dropdown-current').text(text);
+        $dropdown.find('.calculator__select__dropdown-item').removeClass('is-selected');
+        $item.addClass('is-selected');
 
-            $dropdown.find('.calculator__select__dropdown-item').removeClass('is-selected');
-            $item.addClass('is-selected');
+        $dropdown.removeClass('is-open')
+        $dropdown.find('.calculator__select__dropdown-list').slideUp(200);
 
-            $dropdown.removeClass('is-open')
-            $dropdown.find('.calculator__select__dropdown-list').slideUp(200);
+        console.log('Выбран ID:', value);
+    });
 
-            console.log('Выбран ID:', value);
-        });
-
-        $(document).on('click', function (e) {
-            if (!$(e.target).closest('.calculator__select__dropdown').length) {
-                $('.calculator__select__dropdown-list').slideUp(200);
-                $('.calculator__select__dropdown').removeClass('is-open');
-            }
-        });
-
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.calculator__select__dropdown').length) {
+            $('.calculator__select__dropdown-list').slideUp(200);
+            $('.calculator__select__dropdown').removeClass('is-open');
+        }
     });
 
     // закрывам калькулятор
@@ -296,22 +292,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // слайдер баннер
-    const IndexSlider = new Swiper(".index_slider", {
-        slidesPerView: 1,
-        spaceBetween: 16,
-        watchSlidesProgress: true,
-        mousewheelControl: true,
-        watchOverflow: true,
-        watchSlidesVisibility: true,
-        effect: "fade",
-        fadeEffect: {
-            crossFade: true
-        },
-        speed: 1000,
-        navigation: {
-            nextEl: ".index_slider_wrapper .swiper-button-next",
-            prevEl: ".index_slider_wrapper .swiper-button-prev"
-        },
+    document.querySelectorAll('.index_slider_wrapper').forEach(wrapper => {
+        const slider = wrapper.querySelector('.index_slider');
+
+        new Swiper(slider, {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            watchSlidesProgress: true,
+            mousewheelControl: true,
+            watchOverflow: true,
+            watchSlidesVisibility: true,
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 600,
+            navigation: {
+                nextEl: wrapper.querySelector('.swiper-button-next'),
+                prevEl: wrapper.querySelector('.swiper-button-prev'),
+            },
+        });
     });
 
 
@@ -406,22 +406,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // слайдер в сеции о компании
-    const gallerySlider = new Swiper(".about_slider", {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        watchSlidesProgress: true,
-        mousewheelControl: true,
-        watchOverflow: true,
-        watchSlidesVisibility: true,
-        navigation: {
-            nextEl: ".about_slider_wrapper .swiper-button-next",
-            prevEl: ".about_slider_wrapper .swiper-button-prev"
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            // dynamicBullets: true,
-        },
+    document.querySelectorAll('.about_slider_wrapper').forEach(wrapper => {
+        const slider = wrapper.querySelector('.about_slider');
+
+        new Swiper(slider, {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            watchSlidesProgress: true,
+            mousewheelControl: true,
+            watchOverflow: true,
+            watchSlidesVisibility: true,
+            speed: 600,
+            navigation: {
+                nextEl: wrapper.querySelector('.swiper-button-next'),
+                prevEl: wrapper.querySelector('.swiper-button-prev'),
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                // dynamicBullets: true,
+            },
+        });
     });
 
     // раскрытие меню на мобилке
@@ -454,13 +459,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    AOS.init({
-        easing: 'ease-in-out',
-        delay: 100,
-        once: true,
-        duration: 700,
-        offset: window.innerWidth < 577 ? 0 : 100,
-    });
+    // AOS.init({
+    //     easing: 'ease-in-out',
+    //     delay: 100,
+    //     once: true,
+    //     duration: 700,
+    //     offset: window.innerWidth < 577 ? 0 : 100,
+    // });
 
 
     const btnMAX = document.querySelector('.messenger_block .btn');
@@ -514,6 +519,78 @@ document.addEventListener('DOMContentLoaded', () => {
     //         }
     //     })
     // });
+
+    // слайдер картинок
+    document.querySelectorAll('.gallery_slider_wrapper').forEach(wrapper => {
+        const slider = wrapper.querySelector('.gallery_slider');
+
+        new Swiper(slider, {
+            slidesPerView: 'auto',
+            spaceBetween: 12,
+            watchSlidesProgress: true,
+            watchOverflow: true,
+            speed: 600,
+            navigation: {
+                nextEl: wrapper.querySelector('.swiper-button-next'),
+                prevEl: wrapper.querySelector('.swiper-button-prev'),
+            },
+            pagination: {
+                el: wrapper.querySelector('.swiper-pagination'),
+                clickable: true,
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 24,
+                },
+            },
+
+        });
+    });
+
+    // // слайдер картинок
+    document.querySelectorAll('.history_slider_wrapper').forEach(wrapper => {
+        const slider = wrapper.querySelector('.history_slider');
+
+        new Swiper(slider, {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            watchSlidesProgress: true,
+            watchOverflow: true,
+            speed: 600,
+            navigation: {
+                nextEl: wrapper.querySelector('.swiper-button-next'),
+                prevEl: wrapper.querySelector('.swiper-button-prev'),
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                type: "progressbar",
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+            },
+
+            // on: {
+            //     slideChange: function () {
+            //         const slides = this.slides
+            //         slides.forEach(s => s.classList.remove('is-really-active'));
+
+            //         let activeIdx = this.activeIndex;
+            //         if (this.isEnd) {
+            //             activeIdx = slides.length - 1;
+            //         }
+
+            //         slides[activeIdx].classList.add('is-really-active');
+            //     }
+            // }
+        });
+    });
+
+
 
 
 
