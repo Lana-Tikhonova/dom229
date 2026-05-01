@@ -4,15 +4,13 @@ main();
 
 async function main() {
   await ymaps3.ready;
-
   const {
     YMap,
     YMapDefaultSchemeLayer,
-    YMapDefaultFeaturesLayer,
     YMapControls,
+    YMapDefaultFeaturesLayer,
     YMapMarker,
-    YMapFeature,
-    YMapListener
+    YMapFeature // Добавляем класс для отрисовки фигур
   } = ymaps3;
 
   const {
@@ -20,111 +18,59 @@ async function main() {
     YMapGeolocationControl
   } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
 
-  // =========================
-  // КООРДИНАТЫ
-  // =========================
   const CENTER_COORDINATES = [37.540335, 55.386906];
+
+  // Координаты вершин треугольника (массив массивов)
+  // Важно: в JS API 3.0 координаты передаются как [долгота, широта]
+  const POLYGON_POINTS = [
+    [
+      [37.535, 55.389], // Вершина 1
+      [37.545, 55.389], // Вершина 2
+      [37.540, 55.383], // Вершина 3
+      [37.535, 55.389]  // Замыкающая точка (должна совпадать с первой)
+    ]
+  ];
 
   const LOCATION = {
     center: CENTER_COORDINATES,
-    zoom: 16
+    zoom: 15
   };
 
-  // =========================
-  // КАРТА
-  // =========================
-  if (window.map) {
-    window.map.destroy?.();
-  }
-
-  const map = new YMap(document.getElementById('map'), {
+  map = new YMap(document.getElementById('map'), {
     location: LOCATION
   });
 
-  window.map = map;
-
-  // =========================
-  // СЛОИ
-  // =========================
   map.addChild(new YMapDefaultSchemeLayer());
+  map.addChild(new YMapDefaultFeaturesLayer());
 
-  const featureLayer = new YMapDefaultFeaturesLayer();
-  map.addChild(featureLayer);
-
-  // =========================
-  // ПОЛИГОН (треугольник)
-  // =========================
-  const polygonCoords = [
-    [37.5400, 55.3870],
-    [37.5420, 55.3890],
-    [37.5440, 55.3870],
-    [37.5400, 55.3870]
-  ];
-
-  const feature = new YMapFeature({
+  // --- ДОБАВЛЕНИЕ ПОЛИГОНА ---
+  const polygon = new YMapFeature({
+    id: 'my-polygon',
     geometry: {
       type: 'Polygon',
-      coordinates: [polygonCoords]
+      coordinates: POLYGON_POINTS
     },
     style: {
-      fill: 'rgba(56, 128, 255, 0.4)',
-      stroke: [{ color: '#3880ff', width: 3 }]
+      // Цвет заливки в формате RGBA или HEX
+      fill: 'rgba(56, 128, 255, 0.5)',
+      // Цвет обводки
+      stroke: [{ color: '#3880ff', width: 4 }],
     }
   });
 
-  featureLayer.addChild(feature);
+  map.addChild(polygon);
+  // ---------------------------
 
-  // =========================
-  // CONTROLS
-  // =========================
-  const controlsRight = new YMapControls({ position: 'right' });
-  controlsRight.addChild(new YMapZoomControl({}));
-  map.addChild(controlsRight);
+  // Элементы управления
+  map.addChild(new YMapControls({ position: 'right' }).addChild(new YMapZoomControl({})));
+  map.addChild(new YMapControls({ position: 'top right' }).addChild(new YMapGeolocationControl({})));
 
-  const controlsTop = new YMapControls({ position: 'top right' });
-  controlsTop.addChild(new YMapGeolocationControl({}));
-  map.addChild(controlsTop);
-
-  // =========================
-  // CLICK LISTENER
-  // =========================
-  map.addChild(
-    new YMapListener({
-      onClick: (_, event) => {
-        const coords = event?.coords;
-        if (!coords) return;
-
-        console.log(
-          `Координаты точки: [${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}]`
-        );
-      }
-    })
-  );
-
-  // =========================
-  // MARKER
-  // =========================
-  const markerElement = document.createElement('img');
+  // Маркер (упрощенный пример)
+  const markerElement = document.createElement('div');
   markerElement.className = 'my-marker';
-  markerElement.src = 'assets/imgs/marker.svg';
+  markerElement.innerHTML = '<img src="assets/imgs/marker.svg" style="width:30px; height:30px;">';
 
-  const markerContainer = document.createElement('div');
-  markerContainer.className = 'marker_wrapper';
-  markerContainer.appendChild(markerElement);
-
-  map.addChild(
-    new YMapMarker(
-      { coordinates: CENTER_COORDINATES },
-      markerContainer
-    )
-  );
-
-  // =========================
-  // 💥 CRITICAL FIX (твоя проблема "съезда")
-  // =========================
-  requestAnimationFrame(() => {
-    map.update({
-      location: LOCATION
-    });
-  });
+  map.addChild(new YMapMarker({
+    coordinates: CENTER_COORDINATES
+  }, markerElement));
 }
