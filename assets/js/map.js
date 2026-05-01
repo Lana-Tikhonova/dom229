@@ -73,4 +73,12 @@ async function main() {
 }
 
 // Запуск
-main();
+// Вместо обычного main(); пишем это:
+window.onload = () => {
+  // Проверяем, появилось ли API в глобальной видимости
+  if (typeof ymaps3 !== 'undefined') {
+    main().catch(console.error);
+  } else {
+    console.error("Ошибка: ymaps3 не загрузился. Проверьте путь к API в HTML.");
+  }
+};
