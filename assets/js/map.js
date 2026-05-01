@@ -20,6 +20,9 @@ async function main() {
     YMapGeolocationControl
   } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
 
+  // =========================
+  // КООРДИНАТЫ
+  // =========================
   const CENTER_COORDINATES = [37.540335, 55.386906];
 
   const LOCATION = {
@@ -27,10 +30,11 @@ async function main() {
     zoom: 16
   };
 
-  // защита от повторной инициализации
+  // =========================
+  // КАРТА
+  // =========================
   if (window.map) {
     window.map.destroy?.();
-    window.map = null;
   }
 
   const map = new YMap(document.getElementById('map'), {
@@ -40,16 +44,15 @@ async function main() {
   window.map = map;
 
   // =========================
-  // СЛОИ (строго порядок важен)
+  // СЛОИ
   // =========================
-  const schemeLayer = new YMapDefaultSchemeLayer();
-  const featureLayer = new YMapDefaultFeaturesLayer();
+  map.addChild(new YMapDefaultSchemeLayer());
 
-  map.addChild(schemeLayer);
+  const featureLayer = new YMapDefaultFeaturesLayer();
   map.addChild(featureLayer);
 
   // =========================
-  // ПОЛИГОН
+  // ПОЛИГОН (треугольник)
   // =========================
   const polygonCoords = [
     [37.5400, 55.3870],
@@ -83,7 +86,7 @@ async function main() {
   map.addChild(controlsTop);
 
   // =========================
-  // CLICK
+  // CLICK LISTENER
   // =========================
   map.addChild(
     new YMapListener({
@@ -115,4 +118,13 @@ async function main() {
       markerContainer
     )
   );
+
+  // =========================
+  // 💥 CRITICAL FIX (твоя проблема "съезда")
+  // =========================
+  requestAnimationFrame(() => {
+    map.update({
+      location: LOCATION
+    });
+  });
 }
