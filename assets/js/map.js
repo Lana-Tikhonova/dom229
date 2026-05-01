@@ -1,69 +1,61 @@
 window.map = null;
 
-// Главная функция, вызывается при запуске скрипта
 main();
+
 async function main() {
-  // ожидание загрузки модулей
   await ymaps3.ready;
+
   const {
     YMap,
     YMapDefaultSchemeLayer,
-    YMapControls,
     YMapDefaultFeaturesLayer,
+    YMapControls,
     YMapMarker,
     YMapFeature,
-    YMapListener,
+    YMapListener
   } = ymaps3;
 
-  // Импорт модулей для элементов управления на карте
   const {
     YMapZoomControl,
     YMapGeolocationControl
   } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
 
-
-  // Координаты центра карты
+  // Центр карты
   const CENTER_COORDINATES = [37.540335, 55.386906];
-  // координаты метки на карте
-  const MARKER_COORDINATES = [37.540335, 55.386906];
 
-
-  // Объект с параметрами центра и зумом карты
   const LOCATION = {
     center: CENTER_COORDINATES,
     zoom: 16
   };
 
-  // Создание объекта карты
-  map = new YMap(document.getElementById('map'), {
+  // 🔥 защита от повторной инициализации
+  if (window.map) {
+    window.map.destroy?.();
+  }
+
+  const map = new YMap(document.getElementById('map'), {
     location: LOCATION
   });
 
-  // Добавление слоев на карту
+  window.map = map;
+
+  // =========================
+  // СЛОИ (строго в этом порядке)
+  // =========================
   map.addChild(new YMapDefaultSchemeLayer());
 
-  // Добавление элементов управления на карту
-  map.addChild(new YMapControls({
-    position: 'right'
-  })
-    .addChild(new YMapZoomControl({}))
-  );
-  map.addChild(new YMapControls({
-    position: 'top right'
-  })
-    .addChild(new YMapGeolocationControl({}))
-  );
+  const featureLayer = new YMapDefaultFeaturesLayer();
+  map.addChild(featureLayer);
 
-
+  // =========================
+  // ПОЛИГОН (треугольник тестовый)
+  // =========================
   const polygonCoords = [
     [37.5400, 55.3870],
     [37.5420, 55.3890],
     [37.5440, 55.3870],
-    [37.5400, 55.3870]
+    [37.5400, 55.3870] // замыкание
   ];
-
-  // 👇 ЯВНО замыкаем
-  polygonCoords.push(polygonCoords[0]);
 
   const feature = new YMapFeature({
     geometry: {
@@ -75,55 +67,58 @@ async function main() {
       stroke: [{ color: '#3880ff', width: 3 }]
     }
   });
-  // ВАЖНО: добавляем через слой
-  const featureLayer = new YMapDefaultFeaturesLayer();
-  map.addChild(featureLayer);
 
-  // добавляем фичу в слой
   featureLayer.addChild(feature);
 
+  // =========================
+  // CONTROLS
+  // =========================
+  map.addChild(
+    new YMapControls({ position: 'right' })
+      .addChild(new YMapZoomControl({}))
+  );
 
+  map.addChild(
+    new YMapControls({ position: 'top right' })
+      .addChild(new YMapGeolocationControl({}))
+  );
 
+  // =========================
+  // CLICK LISTENER
+  // =========================
   const clickListener = new YMapListener({
-    onClick: (object, event) => {
+    onClick: (_, event) => {
       const coords = event?.coords;
 
       if (coords) {
-        console.log(`Координаты точки: [${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}]`);
-      } else {
-        console.log('Событие получено, но координаты отсутствуют:', event);
+        console.log(
+          `Координаты точки: [${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}]`
+        );
       }
     }
   });
 
   map.addChild(clickListener);
 
-
-  // Создание маркера
+  // =========================
+  // MARKER (нормальный)
+  // =========================
   const markerElement = document.createElement('img');
   markerElement.className = 'my-marker';
   markerElement.src = 'assets/imgs/marker.svg';
-  markerElement.title = 'Маркер';
 
-  // Создание заголовка маркера
   const markerTitle = document.createElement('div');
   markerTitle.className = 'marker-title';
-  markerTitle.innerHTML = '';
 
-  // Контейнер для элементов маркера
-  const imgContainer = document.createElement('div');
-  imgContainer.className = 'marker_wrapper';
-  imgContainer.appendChild(markerElement);
-  imgContainer.appendChild(markerTitle);
+  const markerContainer = document.createElement('div');
+  markerContainer.className = 'marker_wrapper';
+  markerContainer.appendChild(markerElement);
+  markerContainer.appendChild(markerTitle);
 
+  const marker = new YMapMarker(
+    { coordinates: CENTER_COORDINATES },
+    markerContainer
+  );
 
-  // Добавление центра карты
-  map.addChild(new YMapMarker({
-    coordinates: CENTER_COORDINATES
-  }));
-
-  // Добавление маркера на карту
-  map.addChild(new YMapMarker({
-    coordinates: MARKER_COORDINATES
-  }, imgContainer));
+  map.addChild(marker);
 }
