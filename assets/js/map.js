@@ -1,84 +1,111 @@
 window.map = null;
 
+// Главная функция, вызывается при запуске скрипта
+main();
 async function main() {
-  // Ждем полной готовности API и всех пакетов
+  // ожидание загрузки модулей
   await ymaps3.ready;
-
   const {
     YMap,
     YMapDefaultSchemeLayer,
-    YMapDefaultFeaturesLayer,
     YMapControls,
-    YMapMarker,
-    YMapFeature
+    YMapDefaultFeaturesLayer,
+    YMapMarker
   } = ymaps3;
 
-  // Импортируем только контролы, тему мы уже подключили в HTML
-  const { YMapZoomControl, YMapGeolocationControl } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
+  // Импорт модулей для элементов управления на карте
+  const {
+    YMapZoomControl,
+    YMapGeolocationControl
+  } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
 
-  const CENTER_COORDINATES = [37.540335, 55.386906];
 
-  // Координаты полигона (Долгота, Широта)
-  const POLYGON_GEOMETRY = [
-    [
-      [37.536, 55.389],
-      [37.544, 55.389],
-      [37.540, 55.384],
-      [37.536, 55.389]
-    ]
-  ];
+  // Координаты центра карты
 
-  // Инициализация карты
+  // координаты метки на карте
+  const MARKER_COORDINATES = [37.540335, 55.386906];
+
+
+  // Объект с параметрами центра и зумом карты
+  const LOCATION = {
+    center: [37.540335, 55.386906],
+    zoom: 16
+  };
+
+  // Создание объекта карты
   map = new YMap(document.getElementById('map'), {
-    location: {
-      center: CENTER_COORDINATES,
-      zoom: 16
-    }
+    location: LOCATION
   });
 
-  // Добавляем слои (FeaturesLayer обязателен для полигонов)
+  // Добавление слоев на карту
   map.addChild(new YMapDefaultSchemeLayer());
   map.addChild(new YMapDefaultFeaturesLayer());
 
-  // Создаем и добавляем полигон
-  const polygon = new YMapFeature({
+  // Добавление элементов управления на карту
+  map.addChild(new YMapControls({
+    position: 'right'
+  })
+    .addChild(new YMapZoomControl({}))
+  );
+  map.addChild(new YMapControls({
+    position: 'top right'
+  })
+    .addChild(new YMapGeolocationControl({}))
+  );
+
+
+
+
+
+  const polygonFeature = new YMapFeature({
+    id: 'polygon',
+    source: 'featureSource',
     geometry: {
       type: 'Polygon',
-      coordinates: POLYGON_GEOMETRY
+      coordinates: [
+        [
+          [39.4220979, 52.6228689],
+          [39.572434, 52.5183144],
+          [39.8114908, 52.5312354],
+          [39.7007866, 52.6605346],
+          [39.4220979, 52.6228689]
+        ]
+      ]
     },
     style: {
-      fill: 'rgba(56, 128, 255, 0.3)',
-      stroke: [{ color: '#3880ff', width: 4 }]
+      stroke: [{ color: 'red', opacity: 0.9, width: 1 }],
+      fill: 'rgba(1,1,1,0.5)'
     }
   });
-  map.addChild(polygon);
 
-  // Контролы
-  map.addChild(new YMapControls({ position: 'right' }).addChild(new YMapZoomControl({})));
-  map.addChild(new YMapControls({ position: 'top right' }).addChild(new YMapGeolocationControl({})));
 
-  // Маркер
-  const markerWrapper = document.createElement('div');
-  markerWrapper.style.width = '40px';
-  markerWrapper.style.height = '40px';
-  // Центрируем иконку относительно точки (чтобы не плыла)
-  markerWrapper.innerHTML = `
-        <img src="assets/imgs/marker.svg" 
-             style="width: 100%; height: 100%; transform: translate(-50%, -100%); position: absolute;">
-    `;
+  map.addChild(polygonFeature);
 
+  // Создание маркера
+  const markerElement = document.createElement('img');
+  markerElement.className = 'my-marker';
+  markerElement.src = 'assets/imgs/marker.svg';
+  markerElement.title = 'Маркер';
+
+  // Создание заголовка маркера
+  const markerTitle = document.createElement('div');
+  markerTitle.className = 'marker-title';
+  markerTitle.innerHTML = '';
+
+  // Контейнер для элементов маркера
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'marker_wrapper';
+  imgContainer.appendChild(markerElement);
+  imgContainer.appendChild(markerTitle);
+
+
+  // Добавление центра карты
   map.addChild(new YMapMarker({
     coordinates: CENTER_COORDINATES
-  }, markerWrapper));
-}
+  }));
 
-// Запуск
-// Вместо обычного main(); пишем это:
-window.onload = () => {
-  // Проверяем, появилось ли API в глобальной видимости
-  if (typeof ymaps3 !== 'undefined') {
-    main().catch(console.error);
-  } else {
-    console.error("Ошибка: ymaps3 не загрузился. Проверьте путь к API в HTML.");
-  }
-};
+  // Добавление маркера на карту
+  map.addChild(new YMapMarker({
+    coordinates: MARKER_COORDINATES
+  }, imgContainer));
+}
