@@ -55,12 +55,15 @@ async function main() {
   );
 
 
+
   const clickListener = new YMapListener({
     onClick: (object, event) => {
-      const coords = event.location.center;
+      const coords = event?.coords;
 
       if (coords) {
-        console.log(`Координаты для полигона: [${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}]`);
+        console.log(`Координаты точки: [${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}]`);
+      } else {
+        console.log('Событие получено, но координаты отсутствуют:', event);
       }
     }
   });
