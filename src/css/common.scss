@@ -5649,3 +5649,174 @@ label {
 		}
 	}
 }
+
+//gallery
+.gallery_links_list {
+	--bs-gutter-y: 1.5rem;
+
+	.item {
+		color: #FFF;
+		position: relative;
+		border-radius: 24px;
+		overflow: hidden;
+		background: #FFF;
+		box-shadow: 4px 8px 16px 2px rgba(186, 186, 186, 0.25);
+		z-index: 1;
+		height: 388px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 24px;
+		transition: $transition;
+
+		&:hover {
+			box-shadow: 4px 8px 16px 2px rgba(118, 118, 118, 0.5);
+		}
+
+		.bg {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%);
+
+			}
+		}
+
+		.img {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 4px;
+
+			img {
+				width: 19px;
+				height: 24px;
+			}
+
+			span {
+				font-size: 14px;
+				font-weight: 800;
+				line-height: normal;
+			}
+		}
+
+		h3 {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.gallery_full_block {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -12px 40px;
+	row-gap: 24px;
+
+	.item {
+		width: 14.28%;
+		height: 156px;
+
+		padding-left: 12px;
+		padding-right: 12px;
+
+		a {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			border-radius: 16px;
+			overflow: hidden;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+@media screen and (max-width:1399px) {
+	.gallery_full_block {
+		.item {
+			width: 16.66%;
+		}
+	}
+}
+
+@media screen and (max-width:1199px) {
+	.gallery_full_block {
+		.item {
+			width: 20%;
+		}
+	}
+}
+
+@media screen and (max-width:991px) {
+	.gallery_links_list .item {
+		height: 320px;
+	}
+
+	.gallery_full_block {
+		margin-bottom: 24px;
+	}
+
+	.gallery_full_block {
+		.item {
+			width: 25%;
+		}
+	}
+}
+
+@media screen and (max-width:767px) {
+	.gallery_full_block {
+		.item {
+			width: 33.33%;
+		}
+	}
+}
+
+@media screen and (max-width:575px) {
+	.gallery_links_list .item {
+		height: 270px;
+	}
+
+	.gallery_full_block {
+		.item {
+			width: 50%;
+		}
+	}
+}
+
+@media screen and (max-width:400px) {
+	.gallery_full_block {
+		row-gap: 12px;
+
+		.item {
+			height: auto;
+			width: 100%;
+		}
+	}
+}
