@@ -92,6 +92,22 @@ async function main() {
   });
   map.addChild(polygon);
 
+  const clickListener = new ymaps3.YMapListener({
+    onClick: (object, event) => {
+      // В v3 координаты клика передаются в свойстве coords
+      const coords = event?.coords;
+
+      if (coords) {
+        console.log(`Координаты точки: [${coords[0].toFixed(6)}, ${coords[1].toFixed(6)}]`);
+      } else {
+        // Если вдруг coords пуст, посмотрим, что вообще пришло в event
+        console.log('Событие получено, но координаты отсутствуют:', event);
+      }
+    }
+  });
+
+  map.addChild(clickListener);
+
 
   // Создание маркера
   const markerElement = document.createElement('img');
