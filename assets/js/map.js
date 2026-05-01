@@ -5,6 +5,10 @@ main();
 async function main() {
   await ymaps3.ready;
 
+
+  await new Promise(requestAnimationFrame);
+  await new Promise(requestAnimationFrame);
+
   const {
     YMap,
     YMapDefaultSchemeLayer,
