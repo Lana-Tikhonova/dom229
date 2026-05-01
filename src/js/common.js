@@ -491,48 +491,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // видео
+    const players = Array.from(document.querySelectorAll('.player_video')).map(
+        (p) => new Plyr(p, {
+            autoplay: false,
+        })
+    );
 
+    // для остановки всех видео
+    const stopAllVideos = () => {
+        players.forEach(player => player.pause());
+    };
 
-    // // маска для телефона
-    // const phoneInputs = document.querySelectorAll('.form_input[type="tel"]');
-    // phoneInputs.forEach(input => {
-    //     IMask(input, {
-    //         mask: '+{7}(000)000-00-00'
-    //     })
-    // })
-
-    // // валидация телефона
-    // $.validator.addMethod("phoneRU", function (value, element) {
-    //     const digits = value.replace(/\D/g, '');
-    //     return this.optional(element) || digits.length === 11;
-    // }, "Введите корректный номер телефона");
-
-    // // jq валидация
-    // $('form.validate').each(function () {
-    //     $(this).validate({
-    //         errorPlacement: function (error, element) {
-    //             error.appendTo(element.closest(".form_input_group"));
-    //         },
-    //         highlight: function (element, errorClass, validClass) {
-    //             $(element).addClass(errorClass);
-    //             $(element).closest('.form_input_group').addClass(errorClass);
-    //         },
-    //         unhighlight: function (element, errorClass, validClass) {
-    //             $(element).removeClass(errorClass);
-    //             $(element).closest('.form_input_group').removeClass(errorClass);
-    //         },
-    //         rules: {
-    //             agree: "required",
-    //             phone: {
-    //                 required: true,
-    //                 phoneRU: true
-    //             }
-    //         },
-    //         messages: {
-    //             agree: "",
-    //         }
-    //     })
-    // });
+    //  остановить другие видео, если запустили текущее
+    players.forEach((player) => {
+        player.on('play', () => {
+            players.forEach((otherPlayer) => {
+                if (otherPlayer !== player) {
+                    otherPlayer.pause();
+                }
+            });
+        });
+    });
 
     // слайдер картинок
     document.querySelectorAll('.gallery_slider_wrapper').forEach(wrapper => {
@@ -556,6 +536,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 576: {
                     slidesPerView: 'auto',
                     spaceBetween: 24,
+                },
+            },
+            // остановить видео при смене слайда
+            on: {
+                slideChange: function () {
+                    stopAllVideos();
                 },
             },
 
@@ -746,8 +732,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     Fancybox.bind("[data-fancybox]");
-
-
-
 
 })
