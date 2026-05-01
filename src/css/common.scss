@@ -5586,17 +5586,19 @@ label {
 .contacts_map {
 	margin-top: 24px;
 	// height: 578px;
-	height: 0;
-	padding-bottom: clamp(200px, 51%, 578px);
-	position: relative;
+	// height: 0;
+	// padding-bottom: clamp(200px, 51%, 578px);
+	// position: relative;
 	width: 100%;
 
 	#map {
-		height: 100%;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		left: 0;
+		// height: 100%;
+		// position: absolute;
+		// top: 0;
+		// width: 100%;
+		// left: 0;
+		position: relative;
+		height: 578px;
 	}
 }
 
