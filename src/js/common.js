@@ -470,13 +470,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // AOS.init({
-    //     easing: 'ease-in-out',
-    //     delay: 100,
-    //     once: true,
-    //     duration: 700,
-    //     offset: window.innerWidth < 577 ? 0 : 100,
-    // });
+    AOS.init({
+        easing: 'ease-in-out',
+        delay: 100,
+        once: true,
+        duration: 700,
+        offset: window.innerWidth < 577 ? 0 : 100,
+    });
 
 
     const btnMAX = document.querySelector('.messenger_block .btn');
@@ -676,10 +676,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     url: pageUrl
                 }).catch(() => { });
             } else {
-                // пробуем костыль
                 const win = window.open(socialUrls.max, '_blank');
 
-                // fallback
                 if (!win) {
                     copyToClipboard(pageUrl, $btn);
                 }
@@ -738,8 +736,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     $('.vacancy_item_btn').on('click', function () {
-        $('.vacancy_item_btn').not(this).parent().removeClass('active');
-        $('.vacancy_item_btn').not(this).next().slideUp();
+        // $('.vacancy_item_btn').not(this).parent().removeClass('active');
+        // $('.vacancy_item_btn').not(this).next().slideUp();
 
         $(this).parent().toggleClass('active');
         $(this).next().slideToggle('slow');

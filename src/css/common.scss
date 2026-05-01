@@ -5362,13 +5362,17 @@ label {
 	border-radius: 24px;
 	background: #FFF;
 	box-shadow: 4px 8px 16px 2px rgba(118, 118, 118, 0.25);
-	padding: 40px;
 	display: none;
 	margin-top: 24px;
 	margin-bottom: 12px;
 	font-size: 20px;
 	font-weight: 600;
 	line-height: normal;
+
+	.content {
+		padding: 40px;
+
+	}
 
 	h3 {
 		padding: 16px 0;
@@ -5488,8 +5492,12 @@ label {
 
 @media screen and (max-width:767px) {
 	.vacancy_item_content {
-		padding: 24px;
 		font-size: 16px;
+
+		.content {
+			padding: 24px;
+
+		}
 
 		h3 {
 			margin-bottom: 24px;
@@ -5590,6 +5598,18 @@ label {
 	height: 578px;
 	width: 100%;
 	margin-top: 24px;
+	height: 0;
+	padding-bottom: 51%;
+
+	.map {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		svg {
+			max-width: initial;
+		}
+	}
 }
 
 

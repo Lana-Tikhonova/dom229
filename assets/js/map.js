@@ -10,7 +10,8 @@ async function main() {
     YMapDefaultSchemeLayer,
     YMapControls,
     YMapDefaultFeaturesLayer,
-    YMapMarker
+    YMapMarker,
+    YMapFeature
   } = ymaps3;
 
   // Импорт модулей для элементов управления на карте
@@ -54,6 +55,44 @@ async function main() {
   );
 
 
+  const polygon = new YMapFeature({
+    geometry: {
+      type: 'Polygon',
+      coordinates: [
+        [
+
+          [37.54280660725793, 55.388119654857476],
+          [37.54445465470021, 55.389610385883884],
+          [37.54651659533575, 55.38898068742215],
+          [37.546892861875094, 55.3885180453997],
+          [37.54315277247412, 55.38774696328142],
+          [37.54147158858993, 55.38700251083525],
+          [37.54018475702541, 55.386372770663215],
+          [37.53915378670764, 55.386192843049834],
+          [37.5388904001301, 55.38633849880024],
+          [37.538905450791674, 55.38657840121459],
+          [37.540350314302714, 55.38801350120341],
+          [37.540838953725896, 55.388522630348014],
+          [37.54103461232635, 55.388462657842965],
+          [37.54120769493444, 55.38863829134983],
+          [37.54279553973043, 55.388115672270374]
+
+        ]
+      ]
+    },
+    style: {
+      stroke: [
+        {
+          color: '#196DFF99',
+          width: 3
+        }
+      ],
+      fill: '#196DFF14'
+    }
+  });
+  map.addChild(polygon);
+
+
   // Создание маркера
   const markerElement = document.createElement('img');
   markerElement.className = 'my-marker';
@@ -82,61 +121,3 @@ async function main() {
     coordinates: MARKER_COORDINATES
   }, imgContainer));
 }
-
-
-
-// window.map = null;
-
-// main();
-// async function main() {
-//   // Waiting for all api elements to be loaded
-//   await ymaps3.ready;
-//   const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapFeature } = ymaps3;
-//   // Initialize the map
-//   map = new YMap(
-//     // Pass the link to the HTMLElement of the container
-//     document.getElementById('app'),
-//     // Pass the map initialization parameters
-//     {
-//       location:
-//       {
-//         center: [39.6, 52.6],
-//         zoom: 10
-//       }, showScaleInCopyrights: true
-//     },
-//     [
-//       // Add a map scheme layer
-//       new YMapDefaultSchemeLayer({}),
-//       // Add a layer of geo objects to display the polygons
-//       new YMapDefaultFeaturesLayer({})
-//     ]
-//   );
-
-
-//   // Create polygon objects, set their coordinates and styles, and add them to the map
-//   const polygon = new YMapFeature({
-//     geometry: {
-//       type: 'Polygon',
-//       coordinates: [
-//         [
-//           [39.4220979, 52.6228689],
-//           [39.572434, 52.5183144],
-//           [39.8114908, 52.5312354],
-//           [39.7007866, 52.6605346],
-//           [39.4220979, 52.6228689]
-//         ]
-//       ]
-//     },
-//     style: {
-//       stroke: [
-//         {
-//           color: '#196DFF99',
-//           width: 3
-//         }
-//       ],
-//       fill: '#196DFF14'
-//     }
-//   });
-//   map.addChild(polygon);
-
-// }
