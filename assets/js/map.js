@@ -3,74 +3,88 @@ window.map = null;
 main();
 
 async function main() {
+  // Ждем загрузки всех модулей API
   await ymaps3.ready;
+
   const {
     YMap,
     YMapDefaultSchemeLayer,
     YMapControls,
     YMapDefaultFeaturesLayer,
     YMapMarker,
-    YMapFeature // Добавляем класс для отрисовки фигур
+    YMapFeature // Нужно для полигона
   } = ymaps3;
 
+  // Импорт элементов управления
   const {
     YMapZoomControl,
     YMapGeolocationControl
   } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
 
+  // Координаты [долгота, широта]
   const CENTER_COORDINATES = [37.540335, 55.386906];
 
-  // Координаты вершин треугольника (массив массивов)
-  // Важно: в JS API 3.0 координаты передаются как [долгота, широта]
-  const POLYGON_POINTS = [
+  // Координаты для полигона (треугольник вокруг центра)
+  // Важно: массив должен быть трехслойным [[[lon, lat], ...]]
+  const POLYGON_GEOMETRY = [
     [
-      [37.535, 55.389], // Вершина 1
-      [37.545, 55.389], // Вершина 2
-      [37.540, 55.383], // Вершина 3
-      [37.535, 55.389]  // Замыкающая точка (должна совпадать с первой)
+      [37.536, 55.389],
+      [37.544, 55.389],
+      [37.540, 55.384],
+      [37.536, 55.389] // Замыкающая точка
     ]
   ];
 
-  const LOCATION = {
-    center: CENTER_COORDINATES,
-    zoom: 15
-  };
-
+  // Инициализация карты
   map = new YMap(document.getElementById('map'), {
-    location: LOCATION
-  });
-
-  map.addChild(new YMapDefaultSchemeLayer());
-  map.addChild(new YMapDefaultFeaturesLayer());
-
-  // --- ДОБАВЛЕНИЕ ПОЛИГОНА ---
-  const polygon = new YMapFeature({
-    id: 'my-polygon',
-    geometry: {
-      type: 'Polygon',
-      coordinates: POLYGON_POINTS
-    },
-    style: {
-      // Цвет заливки в формате RGBA или HEX
-      fill: 'rgba(56, 128, 255, 0.5)',
-      // Цвет обводки
-      stroke: [{ color: '#3880ff', width: 4 }],
+    location: {
+      center: CENTER_COORDINATES,
+      zoom: 16
     }
   });
 
+  // СЛОИ: Сначала схема, затем слой для объектов (полигонов)
+  map.addChild(new YMapDefaultSchemeLayer());
+  map.addChild(new YMapDefaultFeaturesLayer());
+
+  // ДОБАВЛЕНИЕ ПОЛИГОНА
+  const polygon = new YMapFeature({
+    id: 'triangle',
+    geometry: {
+      type: 'Polygon',
+      coordinates: POLYGON_GEOMETRY
+    },
+    style: {
+      fill: 'rgba(56, 128, 255, 0.3)', // Полупрозрачный синий
+      stroke: [{ color: '#3880ff', width: 3 }] // Яркая обводка
+    }
+  });
   map.addChild(polygon);
-  // ---------------------------
 
-  // Элементы управления
-  map.addChild(new YMapControls({ position: 'right' }).addChild(new YMapZoomControl({})));
-  map.addChild(new YMapControls({ position: 'top right' }).addChild(new YMapGeolocationControl({})));
+  // ЭЛЕМЕНТЫ УПРАВЛЕНИЯ
+  map.addChild(new YMapControls({ position: 'right' })
+    .addChild(new YMapZoomControl({}))
+  );
+  map.addChild(new YMapControls({ position: 'top right' })
+    .addChild(new YMapGeolocationControl({}))
+  );
 
-  // Маркер (упрощенный пример)
-  const markerElement = document.createElement('div');
-  markerElement.className = 'my-marker';
-  markerElement.innerHTML = '<img src="assets/imgs/marker.svg" style="width:30px; height:30px;">';
+  // СОЗДАНИЕ МАРКЕРА
+  const markerWrapper = document.createElement('div');
+  markerWrapper.className = 'marker_wrapper';
 
+  // Создаем саму картинку
+  const markerImg = document.createElement('img');
+  markerImg.src = 'assets/imgs/marker.svg';
+  markerImg.style.width = '40px';  // Задаем размеры явно, чтобы не "уезжало"
+  markerImg.style.height = '40px';
+  markerImg.style.transform = 'translate(-50%, -100%)'; // Центрируем кончик иглы по координате
+
+  markerWrapper.appendChild(markerImg);
+
+  // Добавляем маркер на карту
   map.addChild(new YMapMarker({
-    coordinates: CENTER_COORDINATES
-  }, markerElement));
+    coordinates: CENTER_COORDINATES,
+    title: 'Маркер'
+  }, markerWrapper));
 }
