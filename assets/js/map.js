@@ -48,4 +48,7 @@ async function main() {
   map.addChild(polygon);
 }
 
-main();
+// Ждем, пока браузер "увидит" все HTML-теги
+document.addEventListener('DOMContentLoaded', () => {
+  main().catch(console.error);
+});
