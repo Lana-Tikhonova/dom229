@@ -737,4 +737,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    $('.vacancy_item_btn').on('click', function () {
+        $('.vacancy_item_btn').not(this).parent().removeClass('active');
+        $('.vacancy_item_btn').not(this).next().slideUp();
+
+        $(this).parent().toggleClass('active');
+        $(this).next().slideToggle('slow');
+    });
+
+
+
 })
