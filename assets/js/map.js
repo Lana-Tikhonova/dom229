@@ -55,34 +55,6 @@ async function main() {
   );
 
 
-  // Координаты полигона 
-  const POLYGON_COORDINATES = [
-    [
-      [37.535, 55.385],
-      [37.545, 55.385],
-      [37.545, 55.390],
-      [37.535, 55.390],
-      [37.535, 55.385] // Замыкающая точка (такая же, как первая)
-    ]
-  ];
-
-  // Создание полигона
-  const polygon = new GeoObject({
-    geometry: {
-      type: 'Polygon',
-      coordinates: POLYGON_COORDINATES
-    },
-    style: {
-      fill: 'rgba(56, 128, 255, 0.5)', // Цвет заливки с прозрачностью
-      stroke: [{ color: '#3880ff', width: 4 }] // Цвет и толщина обводки
-    }
-  });
-
-  // Добавление на карту
-  map.addChild(polygon);
-
-
-
   const clickListener = new YMapListener({
     onClick: (object, event) => {
       const coords = event.location.center;
