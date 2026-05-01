@@ -1,32 +1,30 @@
 window.map = null;
 
-main();
 async function main() {
-  // Waiting for all api elements to be loaded
   await ymaps3.ready;
-  const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapFeature } = ymaps3;
-  // Initialize the map
-  map = new YMap(
-    // Pass the link to the HTMLElement of the container
-    document.getElementById('app'),
-    // Pass the map initialization parameters
-    {
-      location:
-      {
-        center: [39.6, 52.6],
-        zoom: 10
-      }, showScaleInCopyrights: true
+
+  const {
+    YMap,
+    YMapDefaultSchemeLayer,
+    YMapDefaultFeaturesLayer,
+    YMapFeature
+  } = ymaps3;
+
+  // 1. Инициализируем карту БЕЗ слоев в конструкторе (так надежнее)
+  map = new YMap(document.getElementById('map'), {
+    location: {
+      center: [39.6, 52.6],
+      zoom: 10
     },
-    [
-      // Add a map scheme layer
-      new YMapDefaultSchemeLayer({}),
-      // Add a layer of geo objects to display the polygons
-      new YMapDefaultFeaturesLayer({})
-    ]
-  );
+    showScaleInCopyrights: true
+  });
 
+  // 2. Сначала добавляем слои через addChild. 
+  // ВАЖНО: FeaturesLayer должен быть добавлен СРАЗУ после SchemeLayer.
+  map.addChild(new YMapDefaultSchemeLayer({}));
+  map.addChild(new YMapDefaultFeaturesLayer({}));
 
-  // Create polygon objects, set their coordinates and styles, and add them to the map
+  // 3. Создаем полигон
   const polygon = new YMapFeature({
     geometry: {
       type: 'Polygon',
@@ -41,15 +39,13 @@ async function main() {
       ]
     },
     style: {
-      stroke: [
-        {
-          color: '#196DFF99',
-          width: 3
-        }
-      ],
-      fill: '#196DFF14'
+      stroke: [{ color: '#196DFF', width: 3, opacity: 0.6 }],
+      fill: 'rgba(25, 109, 255, 0.1)'
     }
   });
-  map.addChild(polygon);
 
+  // 4. Добавляем полигон на карту
+  map.addChild(polygon);
 }
+
+main();
