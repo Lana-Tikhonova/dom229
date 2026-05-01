@@ -319,6 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardSlider = null;
 
     function initCardSlider() {
+        const el = document.querySelector(".card_slider");
+        if (!el) return;
         if (window.innerWidth < 768) {
             if (!cardSlider) {
                 cardSlider = new Swiper(".card_slider", {
@@ -338,13 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     initCardSlider();
-    window.addEventListener("resize", initCardSlider);
 
 
     // слайдер каталога
     let catalogSlider = null;
 
     function initCatalogSlider() {
+        const el = document.querySelector(".catalog_slider");
+        if (!el) return;
         if (window.innerWidth < 992) {
             if (!catalogSlider) {
                 catalogSlider = new Swiper(".catalog_slider", {
@@ -373,7 +376,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     initCatalogSlider();
-    window.addEventListener("resize", initCatalogSlider);
+
+
+    function handleResize() {
+        initCardSlider();
+        initCatalogSlider();
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
 
     // слайдер товаров
@@ -644,8 +655,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // Блок "Поделиться"
+    $('.share_list').on('click', 'button', function () {
+        const $btn = $(this);
+        const social = $btn.data('social');
+        const pageUrl = window.location.href;
+        const pageTitle = document.title;
+
+        const socialUrls = {
+            vkontakte: `https://vk.com/share.php?url=${encodeURIComponent(pageUrl)}`,
+            telegram: `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`,
+            odnoklassniki: `https://connect.ok.ru/offer?url=${encodeURIComponent(pageUrl)}`,
+            max: `https://max.ru/:share?text=${encodeURIComponent(pageUrl)}`
+        };
+
+        if (social === 'max') {
+            if (navigator.share) {
+                navigator.share({
+                    title: pageTitle,
+                    url: pageUrl
+                }).catch(() => { });
+            } else {
+                // пробуем костыль
+                const win = window.open(socialUrls.max, '_blank');
+
+                // fallback
+                if (!win) {
+                    copyToClipboard(pageUrl, $btn);
+                }
+            }
+        } else if (socialUrls[social]) {
+            window.open(socialUrls[social], '_blank', 'width=600,height=400');
+        }
+    });
+
+    // Функция для копирования
+    function copyToClipboard(text, $triggerBtn) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyFeedback($triggerBtn);
+            });
+        } else {
+            // Резервный способ через скрытый input
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopyFeedback($triggerBtn);
+            } catch (err) {
+                console.error('Не удалось скопировать', err);
+            }
+            document.body.removeChild(textArea);
+        }
+    }
+
+    function showCopyFeedback($btn) {
+        const originalHtml = $btn.html();
+        alert('Ссылка скопирована в буфер!');
+    }
 
 
+    // слайдер брендов
+    const brandsSlider = new Swiper(".brands_slider", {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        watchSlidesProgress: true,
+        mousewheelControl: true,
+        watchOverflow: true,
+        watchSlidesVisibility: true,
+        speed: 600,
+        grabCursor: true,
+        breakpoints: {
+            576: {
+                slidesPerView: 'auto',
+                spaceBetween: 24,
+            },
+        },
+    });
 
 
 
