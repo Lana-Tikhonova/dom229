@@ -5584,7 +5584,8 @@ label {
 }
 
 
-.contacts_map {
+#app {
+	overflow: hidden;
 	position: relative;
 	height: 578px;
 	width: 100%;

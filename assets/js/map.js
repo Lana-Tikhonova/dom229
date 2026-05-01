@@ -8,7 +8,7 @@ async function main() {
   // Initialize the map
   map = new YMap(
     // Pass the link to the HTMLElement of the container
-    document.getElementById('map'),
+    document.getElementById('app'),
     // Pass the map initialization parameters
     {
       location:
