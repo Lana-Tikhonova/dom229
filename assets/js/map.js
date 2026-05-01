@@ -56,14 +56,12 @@ async function main() {
   );
 
 
-  // Пример корректного объекта полигона
-  const myPolygon = new YMapFeature({
-    id: 'my-polygon-id', // Желательно добавить уникальный ID
+  const feature = new YMapFeature({
+    id: 'my-polygon-id',
     geometry: {
       type: 'Polygon',
       coordinates: [
         [
-
           [37.54280660725793, 55.388119654857476],
           [37.54445465470021, 55.389610385883884],
           [37.54651659533575, 55.38898068742215],
@@ -84,13 +82,17 @@ async function main() {
       ]
     },
     style: {
-      fill: 'rgba(56, 128, 255, 0.4)', // Цвет заливки
-      stroke: [{ color: '#3880ff', width: 3 }] // Обводка
+      fill: 'rgba(56, 128, 255, 0.4)',
+      stroke: [{ color: '#3880ff', width: 3 }]
     }
   });
 
-  // Добавляем на карту
-  map.addChild(myPolygon);
+  // ВАЖНО: добавляем через слой
+  const featureLayer = new YMapDefaultFeaturesLayer();
+  map.addChild(featureLayer);
+
+  // добавляем фичу в слой
+  featureLayer.addChild(feature);
 
 
 
