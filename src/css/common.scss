@@ -2694,7 +2694,7 @@ label {
 	.map_wrapper {
 		width: 100%;
 		position: relative;
-		padding-bottom: 51%;
+		padding-bottom: clamp(200px, 51%, 578px);
 		height: 0;
 	}
 
@@ -5333,6 +5333,7 @@ label {
 }
 
 .vacancy_item_btn {
+	cursor: pointer;
 	padding: 24px;
 	border-radius: 24px;
 	background: #FFF;
@@ -5341,7 +5342,6 @@ label {
 	align-items: center;
 	justify-content: space-between;
 	font-weight: 600;
-	// margin: 24px 0;
 	margin-bottom: 12px;
 	margin-top: 12px;
 
@@ -5533,5 +5533,106 @@ label {
 
 	.vacancy_external .item .img .people {
 		left: 59%;
+	}
+}
+
+.contacts_wrapper {
+	border-radius: 48px;
+	background: #FFF;
+	padding: 40px;
+}
+
+.contacts_block {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.item {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		width: 22.7%;
+
+		.img {
+			width: 64px;
+			height: 64px;
+		}
+
+		.title {
+			margin-bottom: 10px;
+			color: rgba(45, 45, 56, 0.80);
+			font-size: 18px;
+			line-height: normal;
+		}
+
+		.text {
+			color: $color_black;
+			font-size: 18px;
+			font-weight: 600;
+			line-height: normal;
+		}
+
+		a.text {
+			text-decoration-line: underline;
+			text-decoration-style: solid;
+			text-decoration-skip-ink: auto;
+			text-decoration-thickness: auto;
+			text-underline-offset: auto;
+			text-underline-position: from-font;
+		}
+	}
+}
+
+.contacts_map {
+	margin-top: 24px;
+	// height: 578px;
+	height: 0;
+	padding-bottom: clamp(200px, 51%, 578px);
+	position: relative;
+	width: 100%;
+
+	#map {
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		left: 0;
+	}
+}
+
+@media screen and (max-width:1439px) {
+	.contacts_block .item {
+		width: 25%;
+	}
+}
+
+@media screen and (max-width:1249px) {
+	.contacts_block {
+		row-gap: 24px;
+
+		.item {
+			width: 50%;
+		}
+	}
+}
+
+@media screen and (max-width:767px) {
+	.contacts_wrapper {
+		padding: 16px;
+		border-radius: 24px;
+	}
+
+	.contacts_block .item .text {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width:600px) {
+	.contacts_block {
+		gap: 16px;
+
+		.item {
+			width: 100%;
+		}
 	}
 }

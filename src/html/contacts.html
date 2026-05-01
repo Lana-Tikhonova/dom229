@@ -1,0 +1,83 @@
+@@include('partials/header.html', {
+"title": "Контакты"
+})
+
+<!-- breadcrumb -->
+<section>
+    <div class="container">
+        <ul class="breadcrumb" data-aos="fade-in">
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index_icon">
+                    <svg class="icon w-24 -white">
+                        <use xlink:href="./assets/imgs/sprite.svg#arrow_long_left"></use>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index">
+                    Главная
+                </a>
+            </li>
+            <li>
+                <span class="breadcrumb_item">Контакты</span>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- контакты -->
+<section class='section'>
+    <div class='container'>
+        <h1>Контакты</h1>
+
+        <div class='contacts_wrapper'>
+            <div class='contacts_block'>
+                <div class="item">
+                    <div class="img">
+                        <img data-src="./assets/imgs/contacts_img_1.png" alt="" class='lazyload'>
+                    </div>
+                    <div>
+                        <div class="title">Адрес:</div>
+                        <div class="text">г. Подольск, ул. Большая Серпуховская д.229</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="img">
+                        <img data-src="./assets/imgs/contacts_img_2.png" alt="" class='lazyload'>
+                    </div>
+                    <div>
+                        <div class="title">График работы:</div>
+                        <div class="text">Пн-Сб с 9:00 до 20:00 <br>
+                            Вс - до 18:00</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="img">
+                        <img data-src="./assets/imgs/contacts_img_3.png" alt="" class='lazyload'>
+                    </div>
+                    <div>
+                        <div class="title">Электронная почта:</div>
+                        <a href="mailto:dom229@mail.ru" class="text">dom229@mail.ru</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="img">
+                        <img data-src="./assets/imgs/contacts_img_4.png" alt="" class='lazyload'>
+                    </div>
+                    <div>
+                        <div class="title">Телефон:</div>
+                        <a href="tel:+7 (925) 752-42-44" class="text">+7 (925) 752-42-44</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='contacts_map'>
+            <div class="map" id="map"></div>
+        </div>
+    </div>
+
+</section>
+
+@@include('partials/max.html')
+
+@@include('partials/footer.html')

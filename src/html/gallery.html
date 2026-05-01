@@ -1,0 +1,86 @@
+@@include('partials/header.html', {
+"title": "Галерея"
+})
+
+<!-- breadcrumb -->
+<section>
+    <div class="container">
+        <ul class="breadcrumb" data-aos="fade-in">
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index_icon">
+                    <svg class="icon w-24 -white">
+                        <use xlink:href="./assets/imgs/sprite.svg#arrow_long_left"></use>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index">
+                    Главная
+                </a>
+            </li>
+            <li>
+                <span class="breadcrumb_item">Галерея</span>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- заголовок/описание, поиск-->
+<section class='section pt-0 pb-0'>
+    <div class="container">
+        <h1>Галерея</h1>
+        <div class='section_text'>
+            <h5 class='w-100'>ТК «Елисаветинский»— это визуальное представление пространства, где сочетаются комфорт,
+                современная инфраструктура и разнообразие предложений для посетителей и арендаторов.</h5>
+        </div>
+    </div>
+</section>
+
+<!-- Слайдер картинок -->
+<section class='section'>
+    <div class='gallery_slider_block'>
+        <div class='container'>
+            <div class='gallery_slider_wrapper'>
+                <div class='swiper gallery_slider'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="item">
+                                <img data-src="./assets/imgs/gallery_img_2.jpg" alt="" class='lazyload'>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="item">
+                                <img data-src="./assets/imgs/img_6.jpg" alt="" class='lazyload'>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="item">
+                                <img data-src="./assets/imgs/img_7.jpg" alt="" class='lazyload'>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="item">
+                                <img data-src="./assets/imgs/img_8.jpg" alt="" class='lazyload'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev">
+                    <svg class="icon w-24 -green">
+                        <use xlink:href="./assets/imgs/sprite.svg#arrow_left"></use>
+                    </svg>
+                </div>
+                <div class="swiper-button-next">
+                    <svg class="icon w-24 -green">
+                        <use xlink:href="./assets/imgs/sprite.svg#arrow_right"></use>
+                    </svg>
+                </div>
+                <div class='swiper-pagination'></div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@@include('partials/map.html')
+
+@@include('partials/footer.html')
