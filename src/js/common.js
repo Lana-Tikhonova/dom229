@@ -611,9 +611,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const $sort = $('.news_sort');
-    const $trigger = $('.news_sort_btn');
-    const $list = $('.news_sort_list');
-    const $label = $('.news_sort_label');
+    const $trigger = $sort.find('.news_sort_btn');
+    const $list = $sort.find('.news_sort_list');
+    const $label = $sort.find('.news_sort_label');
 
     // Переключение списка
     $trigger.on('click', function (e) {
@@ -732,5 +732,120 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     Fancybox.bind("[data-fancybox]");
+
+
+
+    $(".complex_filter_shops").overlayScrollbars({
+        className: "os-theme-dark",
+        scrollbars: {
+            clickScrolling: true,
+            visibility: "visible",
+        }
+    });
+
+
+    const $complexDropdown = $('.complex_dropdown');
+    const $complexDropdownBtn = $complexDropdown.find('.complex_dropdown_btn');
+    const $complexDropdownList = $complexDropdown.find('.complex_dropdown_list');
+    const $complexDropdownLabel = $complexDropdown.find('.complex_dropdown_label');
+
+    // Переключение списка
+    $complexDropdownBtn.on('click', function (e) {
+        e.stopPropagation();
+        $complexDropdownList.toggleClass('is-active');
+        $complexDropdownBtn.toggleClass('is-active');
+    });
+
+    // Выбор элемента
+    $('.complex_dropdown_item').on('click', function () {
+        const text = $(this).text();
+        const val = $(this).data('sort');
+
+        $('.complex_dropdown_item').removeClass('active');
+        $(this).addClass('active');
+
+        $complexDropdownLabel.text(text.toLowerCase());
+
+        $complexDropdownList.removeClass('is-active');
+        $complexDropdownBtn.removeClass('is-active');
+
+        console.log('Sorting by:', val);
+    });
+
+    $(document).on('click', function () {
+        $complexDropdownList.removeClass('is-active');
+        $complexDropdownBtn.removeClass('is-active');
+    });
+
+
+    // pакрываем инфу
+    $('.complex_scheme_info_head').on('click', function () {
+        $(this).parent().toggleClass('active')
+    });
+
+
+    const isMobile = () => window.innerWidth <= 768;
+    let panzoomInstance = null;
+    const schemeWrapper = document.querySelector('.complex_map');
+
+    const schemeContainer = schemeWrapper.querySelector('.complex_scheme .img');
+    const zoomInBtn = schemeWrapper.querySelector('#zoom-in');
+    const zoomOutBtn = schemeWrapper.querySelector('#zoom-out');
+
+
+    // const initialScale = isMobile() ? 2 : 1;
+
+    panzoomInstance = Panzoom(schemeContainer, {
+        minScale: 1,
+        maxScale: 10,
+        contain: 'outside',
+        // startScale: initialScale,
+        startScale: 1,
+    });
+
+
+    schemeContainer.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+
+    zoomInBtn.onclick = panzoomInstance.zoomIn;
+    zoomOutBtn.onclick = panzoomInstance.zoomOut;
+
+
+
+
+    let currentTippy = null;
+
+    tippy('.scheme_tippy_btn', {
+        trigger: isMobile() ? 'click' : 'mouseenter focus',
+        // trigger: 'click',
+        content(reference) {
+            const id = reference.getAttribute('data-template');
+            const template = document.getElementById(id);
+            return template ? template.innerHTML : '';
+        },
+        allowHTML: true,
+        arrow: false,
+        theme: 'scheme_tooltip',
+        animation: 'scale',
+        placement: 'right',
+        maxWidth: '272px',
+        interactive: true,
+        duration: [400, 200],
+        appendTo: document.querySelector('.complex_section'),
+        distance: 0,
+        offset: [0, 0],
+        onShow(instance) {
+            if (currentTippy && currentTippy !== instance) {
+                currentTippy.hide();
+            }
+            currentTippy = instance;
+            const tippyBox = instance.popper;
+        },
+        onHide(instance) {
+            if (currentTippy === instance) {
+                currentTippy = null;
+            }
+        }
+    });
+
 
 })

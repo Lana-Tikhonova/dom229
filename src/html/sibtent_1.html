@@ -1,0 +1,316 @@
+@@include('partials/header.html', {
+"title": "Сибтент",
+"script": "assets/js/map.js"
+})
+
+<!-- breadcrumb -->
+<section>
+    <div class="container">
+        <ul class="breadcrumb" data-aos="fade">
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index_icon">
+                    <svg class="icon w-24 -white">
+                        <use xlink:href="./assets/imgs/sprite.svg#arrow_long_left"></use>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="/" class="breadcrumb_item breadcrumb_item_index">
+                    Главная
+                </a>
+            </li>
+            <li>
+                <span class="breadcrumb_item">Схема Сибтент</span>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class='section complex_section'>
+    <div class="container">
+        <div class="complex_wrapper">
+            <div class='complex_action'>
+                <h1>Комплекс Cибтент (1 этаж)</h1>
+                <a href="#" class='btn'>
+                    Открыть общую схему ТК
+                    <svg class="icon w-24 -black">
+                        <use xlink:href="./assets/imgs/sprite.svg#map"></use>
+                    </svg>
+                </a>
+                <div class='select_floor_wrapper'>
+                    <div class='select_floor_text'>Выберите этаж</div>
+                    <div class='select_floor'>
+                        <a href="#" class='active'>1</a>
+                        <a href="#" class=''>2</a>
+                    </div>
+                </div>
+            </div>
+            <div class='complex_block'>
+
+                <div class='complex_filter_wrapper'>
+                    <div class='complex_filter'>
+                        <div class="complex_filter_item">
+                            <div class="title">1 этаж</div>
+                            <form class="complex_search search_block" method="get" action="#">
+                                <input type="text" name="search_complex" id="search_complex"
+                                    placeholder="Название отдела" value=""
+                                    class="complex_search_input search_block_input">
+                                <a href="javascript:;" class="complex_search_btn search_block_input_btn">
+                                    <svg class="icon w-24 ">
+                                        <use xlink:href="./assets/imgs/sprite.svg#search"></use>
+                                    </svg>
+                                </a>
+                            </form>
+                            <div class="complex_dropdown">
+                                <button type="button" class="complex_dropdown_btn">
+                                    <span class="complex_dropdown_label">Каталог</span>
+                                    <svg class="icon w-24 ">
+                                        <use xlink:href="./assets/imgs/sprite.svg#arrow_bottom"></use>
+                                    </svg>
+                                </button>
+                                <ul class="complex_dropdown_list">
+                                    <li class="complex_dropdown_item active" data-sort="catalog">Каталог</li>
+                                    <li class="complex_dropdown_item" data-sort="catalog_1">Каталог 1</li>
+                                    <li class="complex_dropdown_item" data-sort="catalog_2">Каталог 2</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='complex_filter_item'>
+                            <div class='complex_filter_shops'>
+                                <div class="item">
+                                    <div class="text">Ручной инструмент</div>
+                                    <div class="name">ИП Авакян А.</div>
+                                    <div class='number_list'>
+                                        <div class="number active">А-12</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="text">Ручной инструмент</div>
+                                    <div class="name">ИП Авакян А.</div>
+                                    <div class='number_list'>
+                                        <div class="number">А-01</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="text">Ручной инструмент</div>
+                                    <div class="name">ИП Авакян А.</div>
+                                    <div class='number_list'>
+                                        <div class="number">А-07</div>
+                                        <div class="number">Б-07</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="text">Ручной инструмент</div>
+                                    <div class="name">ИП Авакян А.</div>
+                                    <div class='number_list'>
+                                        <div class="number">А-12</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="text">Ручной инструмент</div>
+                                    <div class="name">ИП Авакян А.</div>
+                                    <div class='number_list'>
+                                        <div class="number">А-12</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="text">Ручной инструмент</div>
+                                    <div class="name">ИП Авакян А.</div>
+                                    <div class='number_list'>
+                                        <div class="number">А-12</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='complex_map'>
+                    <div class='complex_scheme'>
+                        <div class='img_wrapper'>
+                            <div class='img_block'>
+                                <div class='img'>
+                                    <img src="./assets/imgs/complex/spider_1.png" alt="">
+                                    <svg width="1260" height="698" viewBox="0 0 1260 698" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.5" y="0.5" width="1259" height="697" />
+                                        <path class="scheme_tippy_btn" data-template="scheme-content_1"
+                                            fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M86.5 476.95L92.5 193.669H387V476.95H86.5Z" />
+                                        <path class="scheme_tippy_btn" data-template="scheme-content_2"
+                                            d="M395 279.3V193.669H568V291.249H519L498 279.3H395Z" />
+                                        <path class="scheme_tippy_btn" data-template="scheme-content_3"
+                                            d="M577.5 291.249V193.669H689.5V291.249H577.5Z" />
+                                        <path d="M699 291.249V193.669H815V291.249H699Z" />
+                                        <path d="M821.5 291.249V193.669H934V240.468L886 291.249H821.5Z" />
+                                        <path d="M1001 193.669V240.468L1029.5 270.339H1060V193.669H1001Z" />
+                                        <path class="scheme_tippy_btn" data-template="scheme-content_1"
+                                            d="M1064 193.669H1120.5V270.339H1064V193.669Z" />
+                                        <path d="M1123.5 390.82L1125.5 477.447H1006.5V420.194L1032.5 390.82H1123.5Z" />
+                                        <path d="M945.5 420.193H999L1001 477.447H945.5V420.193Z" />
+                                        <path d="M821.5 382.356H902L940 420.194V477.447H821.5V382.356Z" />
+                                        <path d="M699 382.356H816.5V447.078H745.5V477.447H699V382.356Z" />
+                                        <path d="M759 451.061H816.5V477.447H759V451.061Z" />
+                                        <path d="M573 417.704L611.5 382.356H694V477.447H573V417.704Z" />
+                                        <path d="M392.5 477.447V390.82H432.5V476.95L392.5 477.447Z" />
+                                        <path class="scheme_tippy_btn" data-template="scheme-content_2"
+                                            d="M437.5 390.82H476L511 421.687V476.95H437.5V390.82Z" />
+                                    </svg>
+
+
+                                </div>
+                            </div>
+                            <div class='complex_scheme_zoom_btn'>
+                                <button id="zoom-in">+</button>
+                                <button id="zoom-out">-</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="display: none;">
+                        <div id="scheme-content_1">
+                            <div class="tooltip_block tooltip_block_scheme">
+                                <div class="title">Ручной инструмент</div>
+                                <div class='name'>ИП Авакян А.</div>
+                                <div class='links'>
+                                    <a href="tel:8-926-45-77-693 ">8-926-45-77-693 </a>
+                                    <a href="tel:8-903-53-79-852 ">8-903-53-79-852 </a>
+                                </div>
+                                <div class='time'>
+                                    <svg class="icon w-24">
+                                        <use xlink:href="./assets/imgs/sprite.svg#time"></use>
+                                    </svg>
+                                    с 9:00 до 20:00<br>
+                                    Вс. - до 18:00
+                                </div>
+                                <a href="#" class='btn btn_green'>Подробнее</a>
+                            </div>
+                        </div>
+                        <div id="scheme-content_2">
+                            <div class="tooltip_block tooltip_block_scheme">
+                                <div class="title">Ручной инструмент</div>
+                                <div class='name'>ИП Джугурян</div>
+                                <div class='links'>
+                                    <a href="tel:8-926-45-77-693 ">8-926-45-77-693 </a>
+                                </div>
+                                <div class='time'>
+                                    <svg class="icon w-24">
+                                        <use xlink:href="./assets/imgs/sprite.svg#time"></use>
+                                    </svg>
+                                    с 9:00 до 20:00<br>
+                                    Вс. - до 18:00
+                                </div>
+                                <a href="#" class='btn btn_green'>Подробнее</a>
+                            </div>
+                        </div>
+                        <div id="scheme-content_3">
+                            <div class="tooltip_block tooltip_block_scheme">
+                                <div class="title">Ручной инструмент</div>
+                                <div class='name'>ИП Макинян</div>
+                                <div class='time'>
+                                    <svg class="icon w-24">
+                                        <use xlink:href="./assets/imgs/sprite.svg#time"></use>
+                                    </svg>
+                                    с 9:00 до 20:00<br>
+                                    Вс. - до 18:00
+                                </div>
+                                <a href="#" class='btn btn_green'>Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='complex_scheme_info'>
+                        <div class="complex_scheme_info_head">
+                            <div class="complex_scheme_info_title">Условные обозначения</div>
+                            <div class="complex_scheme_info_btn">
+                                <span>Развернуть</span>
+                                <span>Свернуть</span>
+                            </div>
+                        </div>
+                        <div class='complex_scheme_info_body'>
+                            <div class='complex_scheme_info_col'>
+                                <div class='complex_scheme_info_item --shadow'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_1.svg" alt="">
+                                    Парковочная площадка
+                                </div>
+                                <div class='complex_scheme_info_item --shadow '>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_2.svg" alt="">
+                                    Туалет
+                                </div>
+                                <div class='complex_scheme_info_item'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_3.svg" alt="">
+                                    Средства первой помощи
+                                </div>
+                                <div class='complex_scheme_info_item --shadow '>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_4.svg" alt="">
+                                    Пост охраны / средства первой помощи
+                                </div>
+                                <div class='complex_scheme_info_item --shadow '>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_5.svg" alt="">
+                                    Стоянка машин доставки
+                                </div>
+                            </div>
+                            <div class='complex_scheme_info_col'>
+                                <div class='complex_scheme_info_item --shadow'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_6.svg" alt="">
+                                    Мойка самообслуживания
+                                </div>
+                                <div class='complex_scheme_info_item'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_7.svg" alt="">
+                                    Администрация
+                                </div>
+                                <div class='complex_scheme_info_item --shadow'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_8.svg" alt="">
+                                    Кафе и продукты
+                                </div>
+                                <div class='complex_scheme_info_item'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_9.svg" alt="">
+                                    Служ. помещения
+                                </div>
+                                <div class='complex_scheme_info_item'>
+                                    <img src="./assets/imgs/complex/complex_scheme_info_img_10.svg" alt="">
+                                    Банкоматы
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class='organizations_block'>
+            <h3>Все организации</h3>
+            <div class='organizations_list'>
+                <div class="item">
+                    <div class="name">ИП Бакиров Р.Р.</div>
+                    <div class="info">Окна ПВХ, двери ПВХ, аллюминиевые конструкции, подоконники</div>
+                    <div class="phone">
+                        <a href="tel:+7 (926) 666-08-62">+7 (926) 666-08-62 </a>
+                        <a href="tel:+7 (929) 960-48-08">+7 (929) 960-48-08 </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name">ИП Яценко А.О.</div>
+                    <div class="info">Потолки. Производство полотен натяжного потолка. Комплектующие для установки
+                        натяжного потолка</div>
+                    <div class="phone">
+                        <a href="tel:+7 (985) 227-34-28">+7 (985) 227-34-28</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name">ИП Ашуров Н.Л.</div>
+                    <div class="info">Фурнитура для фасадов</div>
+                    <div class="phone">
+                        <span>Нет данных</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@@include('partials/max.html')
+@@include('partials/map.html')
+
+
+@@include('partials/footer.html')
