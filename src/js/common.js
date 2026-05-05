@@ -74,7 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Функция для закрытия всего
     function closeEverything() {
         $('.nav-list_dropdown').hide();
-        $('.dd_menu_btn, .nav-list,.mobile_menu_btn, .mobile_menu, .header_search, .header_search_result, .overlay, .nav-list, .header_catalog_btn, .catalog_dropdown, .header_calc_btn, .calculator_dropdown,.calculator_dropdown, header_calc_btn').removeClass('active');
+        $('.filter__dropdown').hide();
+        $('.dd_menu_btn, .nav-list,.mobile_menu_btn, .mobile_menu, .header_search, .header_search_result, .overlay, .nav-list, .header_catalog_btn, .catalog_dropdown, .header_calc_btn, .calculator_dropdown,.calculator_dropdown, header_calc_btn,.filter__main-trigger').removeClass('active');
     }
 
     //закрытие  при клике на оверлей
@@ -812,103 +813,180 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let panzoomInstance = null;
     const schemeWrapper = document.querySelector('.complex_map');
+    if (schemeWrapper) {
+        const schemeContainer = schemeWrapper.querySelector('.complex_scheme .img');
+        const zoomInBtn = schemeWrapper.querySelector('#zoom-in');
+        const zoomOutBtn = schemeWrapper.querySelector('#zoom-out');
 
-    const schemeContainer = schemeWrapper.querySelector('.complex_scheme .img');
-    const zoomInBtn = schemeWrapper.querySelector('#zoom-in');
-    const zoomOutBtn = schemeWrapper.querySelector('#zoom-out');
+        // приближение на карте
+        panzoomInstance = Panzoom(schemeContainer, {
+            minScale: 1,
+            maxScale: 10,
+            contain: 'outside',
+            // startScale: initialScale,
+            startScale: 1,
+        });
+        schemeContainer.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+        zoomInBtn.onclick = panzoomInstance.zoomIn;
+        zoomOutBtn.onclick = panzoomInstance.zoomOut;
 
-    // приближение на карте
-    panzoomInstance = Panzoom(schemeContainer, {
-        minScale: 1,
-        maxScale: 10,
-        contain: 'outside',
-        // startScale: initialScale,
-        startScale: 1,
-    });
+        // прокрутка списка
+        function scrollToShopItems(shopId) {
+            const targetItems = document.querySelectorAll(`.complex_filter_shops_col[data-shop="${shopId}"]`);
 
-    schemeContainer.addEventListener('wheel', panzoomInstance.zoomWithWheel);
-    zoomInBtn.onclick = panzoomInstance.zoomIn;
-    zoomOutBtn.onclick = panzoomInstance.zoomOut;
+            document.querySelectorAll('.complex_filter_shops_col').forEach(el => {
+                el.classList.remove('is-highlighted');
+            });
 
-    // прокрутка списка
-    function scrollToShopItems(shopId) {
-        const targetItems = document.querySelectorAll(`.complex_filter_shops_col[data-shop="${shopId}"]`);
+            if (targetItems.length > 0 && shopsScrollbar) {
+                targetItems.forEach(item => item.classList.add('is-highlighted'));
 
-        document.querySelectorAll('.complex_filter_shops_col').forEach(el => {
-            el.classList.remove('is-highlighted');
+                // скроллим к первой из списка
+                shopsScrollbar.scroll(targetItems[0], 500, "swing");
+            }
+        }
+
+        // всплывашка при наведении на свг
+        let currentTippy = null;
+
+        tippy('.scheme_tippy_btn', {
+            trigger: isMobile() ? 'click' : 'mouseenter focus',
+            trigger: 'click',
+            content(reference) {
+                const id = reference.getAttribute('data-template');
+                const template = document.getElementById(id);
+                return template ? template.innerHTML : '';
+            },
+            allowHTML: true,
+            arrow: false,
+            theme: 'scheme_tooltip',
+            animation: 'scale',
+            placement: isMobile() ? 'bottom' : 'right',
+            maxWidth: '272px',
+            interactive: true,
+            duration: [400, 200],
+            appendTo: document.querySelector('.complex_section'),
+            distance: 0,
+            offset: [0, 0],
+            onShow(instance) {
+                if (currentTippy && currentTippy !== instance) {
+                    currentTippy.hide();
+                }
+                currentTippy = instance;
+
+
+                // слайдер в открытом тултипе
+                const sliderEl = instance.popper.querySelector('.tooltip_slider');
+
+                if (sliderEl && !sliderEl.swiper) {
+                    new Swiper(sliderEl, {
+                        slidesPerView: 1,
+                        spaceBetween: 12,
+                        watchSlidesProgress: true,
+                        observeParents: true,
+                        observer: true,
+                        pagination: {
+                            el: instance.popper.querySelector(".swiper-pagination"),
+                            clickable: true,
+                            // dynamicBullets: true,
+                        },
+                    });
+                }
+
+                // прокрутка списка
+                const shopId = instance.reference.getAttribute('data-template');
+                scrollToShopItems(shopId);
+            },
+            onHide(instance) {
+                // удаляем слайдер
+                const sliderEl = instance.popper.querySelector('.tooltip_slider');
+                if (sliderEl && sliderEl.swiper) {
+                    sliderEl.swiper.destroy();
+                }
+
+                if (currentTippy === instance) {
+                    currentTippy = null;
+                }
+            }
         });
 
-        if (targetItems.length > 0 && shopsScrollbar) {
-            targetItems.forEach(item => item.classList.add('is-highlighted'));
-
-            // скроллим к первой из списка
-            shopsScrollbar.scroll(targetItems[0], 500, "swing");
-        }
     }
 
-    // всплывашка при наведении на свг
-    let currentTippy = null;
 
-    tippy('.scheme_tippy_btn', {
-        trigger: isMobile() ? 'click' : 'mouseenter focus',
-        trigger: 'click',
-        content(reference) {
-            const id = reference.getAttribute('data-template');
-            const template = document.getElementById(id);
-            return template ? template.innerHTML : '';
-        },
-        allowHTML: true,
-        arrow: false,
-        theme: 'scheme_tooltip',
-        animation: 'scale',
-        placement: isMobile() ? 'bottom' : 'right',
-        maxWidth: '272px',
-        interactive: true,
-        duration: [400, 200],
-        appendTo: document.querySelector('.complex_section'),
-        distance: 0,
-        offset: [0, 0],
-        onShow(instance) {
-            if (currentTippy && currentTippy !== instance) {
-                currentTippy.hide();
-            }
-            currentTippy = instance;
+    // открытие фильтра в каталоге
+    $('.filter__main-trigger').on('click', function () {
+        $(this).toggleClass('active');
+        $('.overlay').addClass('active');
+        $('.filter__dropdown').slideToggle(400);
+    });
+
+    $('.filter__item--toggle').on('click', function () {
+        const $group = $(this).closest('.filter__group');
+        const $subMenu = $group.find('.filter__sub-menu');
+
+        $group.toggleClass('is-open');
+        $subMenu.slideToggle();
+    });
+
+    $('.filter__checkbox').on('click', function (e) {
+        e.stopPropagation();
+    });
 
 
-            // слайдер в открытом тултипе
-            const sliderEl = instance.popper.querySelector('.tooltip_slider');
+    // добавление тегов
+    $('.filter__checkbox').on('change', function () {
+        const $checkbox = $(this);
+        const isChecked = $checkbox.is(':checked');
 
-            if (sliderEl && !sliderEl.swiper) {
-                new Swiper(sliderEl, {
-                    slidesPerView: 1,
-                    spaceBetween: 12,
-                    watchSlidesProgress: true,
-                    observeParents: true,
-                    observer: true,
-                    pagination: {
-                        el: instance.popper.querySelector(".swiper-pagination"),
-                        clickable: true,
-                        // dynamicBullets: true,
-                    },
-                });
-            }
+        let checkboxId = $checkbox.attr('id');
+        if (!checkboxId) {
+            checkboxId = 'ch-' + Math.random().toString(36).substr(2, 9);
+            $checkbox.attr('id', checkboxId);
+        }
 
-            // прокрутка списка
-            const shopId = instance.reference.getAttribute('data-template');
-            scrollToShopItems(shopId);
-        },
-        onHide(instance) {
-            // удаляем слайдер
-            const sliderEl = instance.popper.querySelector('.tooltip_slider');
-            if (sliderEl && sliderEl.swiper) {
-                sliderEl.swiper.destroy();
-            }
-
-            if (currentTippy === instance) {
-                currentTippy = null;
-            }
+        if (isChecked) {
+            addTag($checkbox, checkboxId);
+        } else {
+            removeTag(checkboxId);
         }
     });
 
+    function addTag($checkbox, id) {
+        const $container = $('#selectedResults');
+
+        if ($container.find(`[data-target="${id}"]`).length > 0) return;
+
+        const $item = $checkbox.closest('.filter__item, .filter__sub-item');
+        let labelText = $item.find('.filter__label').text().trim();
+        let fullPath = labelText;
+
+        const $parentGroup = $checkbox.closest('.filter__group');
+        if ($parentGroup.length > 0) {
+            const parentName = $parentGroup.find('.filter__item--toggle .filter__label').text().trim();
+            fullPath = `${parentName} / ${labelText}`;
+        }
+
+        const $tag = $(`
+            <div class="selected-tag" data-target="${id}">
+                <span>${fullPath}</span>
+                <button class="selected-tag__remove">✕</button>
+            </div>
+        `);
+
+        $tag.find('.selected-tag__remove').on('click', function () {
+            $checkbox.prop('checked', false).trigger('change');
+        });
+
+        $container.append($tag);
+    }
+
+    function removeTag(id) {
+        const $tag = $(`#selectedResults [data-target="${id}"]`);
+
+        $tag.css('opacity', '0').css('transform', 'scale(0.8)');
+        setTimeout(() => {
+            $tag.remove();
+        }, 200);
+    }
 
 })
