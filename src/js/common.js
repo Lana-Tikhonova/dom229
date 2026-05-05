@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
+    // вакансии
     $('.vacancy_item_btn').on('click', function () {
         // $('.vacancy_item_btn').not(this).parent().removeClass('active');
         // $('.vacancy_item_btn').not(this).next().slideUp();
@@ -730,33 +730,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
+    // fancybox
     Fancybox.bind("[data-fancybox]");
 
 
-
-    $(".complex_filter_shops").overlayScrollbars({
+    // кастомный скроллбар и прикрутка блока при наведении на свг
+    const shopsScrollbar = $(".complex_filter_shops").overlayScrollbars({
         className: "os-theme-dark",
         scrollbars: {
             clickScrolling: true,
             visibility: "visible",
         }
+    }).overlayScrollbars();
+
+
+    const mapButtons = document.querySelectorAll('.scheme_tippy_btn');
+
+    mapButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function () {
+            const shopId = this.getAttribute('data-template');
+
+            const targetItems = document.querySelectorAll(`.complex_filter_shops_col[data-shop="${shopId}"]`);
+
+            document.querySelectorAll('.complex_filter_shops_col').forEach(el => {
+                el.classList.remove('is-highlighted');
+            });
+
+            if (targetItems.length > 0) {
+                // подсвечиваем все найденные блоки
+                targetItems.forEach(item => item.classList.add('is-highlighted'));
+
+                // скроллим к первому из найденных
+                if (shopsScrollbar) {
+                    shopsScrollbar.scroll(targetItems[0], 500, "swing");
+                }
+            }
+        });
     });
 
-
+    // кастомный селект в комплексе
     const $complexDropdown = $('.complex_dropdown');
     const $complexDropdownBtn = $complexDropdown.find('.complex_dropdown_btn');
     const $complexDropdownList = $complexDropdown.find('.complex_dropdown_list');
     const $complexDropdownLabel = $complexDropdown.find('.complex_dropdown_label');
 
-    // Переключение списка
     $complexDropdownBtn.on('click', function (e) {
         e.stopPropagation();
         $complexDropdownList.toggleClass('is-active');
         $complexDropdownBtn.toggleClass('is-active');
     });
 
-    // Выбор элемента
+
     $('.complex_dropdown_item').on('click', function () {
         const text = $(this).text();
         const val = $(this).data('sort');
@@ -768,8 +792,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         $complexDropdownList.removeClass('is-active');
         $complexDropdownBtn.removeClass('is-active');
-
-        console.log('Sorting by:', val);
     });
 
     $(document).on('click', function () {
@@ -783,8 +805,10 @@ document.addEventListener('DOMContentLoaded', () => {
         $(this).parent().toggleClass('active')
     });
 
-
+    // логика карты свг
     const isMobile = () => window.innerWidth <= 768;
+    // const initialScale = isMobile() ? 2 : 1;
+
     let panzoomInstance = null;
     const schemeWrapper = document.querySelector('.complex_map');
 
@@ -792,9 +816,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomInBtn = schemeWrapper.querySelector('#zoom-in');
     const zoomOutBtn = schemeWrapper.querySelector('#zoom-out');
 
-
-    // const initialScale = isMobile() ? 2 : 1;
-
+    // приближение на карте
     panzoomInstance = Panzoom(schemeContainer, {
         minScale: 1,
         maxScale: 10,
@@ -803,15 +825,11 @@ document.addEventListener('DOMContentLoaded', () => {
         startScale: 1,
     });
 
-
     schemeContainer.addEventListener('wheel', panzoomInstance.zoomWithWheel);
-
     zoomInBtn.onclick = panzoomInstance.zoomIn;
     zoomOutBtn.onclick = panzoomInstance.zoomOut;
 
-
-
-
+    // всплывашка при наведении на свг
     let currentTippy = null;
 
     tippy('.scheme_tippy_btn', {

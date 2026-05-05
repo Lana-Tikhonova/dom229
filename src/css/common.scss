@@ -6065,6 +6065,13 @@ label {
 	h1 {
 		margin-bottom: 0;
 	}
+
+	.btn {
+		padding: 16px;
+		font-size: 14px;
+
+		font-weight: 600;
+	}
 }
 
 .select_floor_wrapper {
@@ -6138,19 +6145,22 @@ label {
 	background: #FFF;
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
-
-
+	gap: 16px;
 
 	&:last-child {
 		height: 500px;
+		padding: 0;
+
 	}
 
 
+	// .os-padding {
+	// 	margin-bottom: 24px;
+	// 	margin-top: 24px;
+	// }
+
 	.os-host-overflow {
-		height: calc(100% + 48px);
-		padding: 24px;
-		margin: -24px;
+		height: 100%;
 	}
 
 	.os-theme-dark>.os-scrollbar-vertical,
@@ -6184,6 +6194,7 @@ label {
 		font-size: 18px;
 		font-weight: 600;
 		line-height: normal;
+		margin-bottom: 8px;
 	}
 }
 
@@ -6201,6 +6212,14 @@ label {
 	}
 }
 
+.complex_filter_shops_col {
+	padding: 24px;
+
+	&:not(:last-child) {
+		padding-bottom: 0;
+	}
+}
+
 .complex_filter_shops {
 	overflow: auto;
 
@@ -6208,8 +6227,6 @@ label {
 		padding: 16px;
 		border-radius: 24px;
 		border: 1px solid #DDD;
-
-		margin-bottom: 24px;
 
 		.text {
 			font-size: 16px;
@@ -6386,6 +6403,7 @@ label {
 		position: relative;
 		z-index: 1;
 		fill: transparent;
+		fill: rgba(120, 255, 167, 0.5);
 
 		&:hover {
 			fill: rgba(120, 255, 167, 0.5);
@@ -6474,6 +6492,7 @@ label {
 }
 
 .complex_scheme_info_btn {
+	cursor: pointer;
 	color: #8B8B8B;
 	font-size: 14px;
 	font-weight: 600;
@@ -6621,11 +6640,11 @@ label {
 
 	.complex_filter_item {
 		&:first-child {
-			height: 232px;
+			height: 222px;
 		}
 
 		&:last-child {
-			height: calc(100% - 232px - 16px);
+			height: calc(100% - 222px - 16px);
 		}
 
 	}
@@ -6685,13 +6704,6 @@ label {
 		}
 	}
 
-	.complex_filter_shops .item {
-		margin-bottom: 16px;
-
-		&:last-child {
-			margin-bottom: 24px;
-		}
-	}
 
 	.complex_scheme_info {
 		position: relative;
@@ -6707,11 +6719,6 @@ label {
 		padding: 16px;
 		gap: 16px;
 
-		.os-host-overflow {
-			height: calc(100% + 32px);
-			padding: 16px;
-			margin: -16px;
-		}
 
 		.os-theme-dark>.os-scrollbar-vertical,
 		.os-theme-light>.os-scrollbar-vertical {
@@ -6720,10 +6727,8 @@ label {
 		}
 	}
 
-	.complex_filter_shops .item {
-		&:last-child {
-			margin-bottom: 16px;
-		}
+	.complex_filter_shops_col {
+		padding: 16px;
 	}
 
 	.complex_scheme_info_title {
