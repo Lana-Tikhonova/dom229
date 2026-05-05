@@ -30,7 +30,7 @@
         <div class="complex_wrapper">
             <div class='complex_action'>
                 <h1>Комплекс Cибтент (1 этаж)</h1>
-                <a href="#" class='btn'>
+                <a href="general_map_tk.html" class='btn'>
                     Открыть общую схему ТК
                     <svg class="icon w-24 -black">
                         <use xlink:href="./assets/imgs/sprite.svg#map"></use>
@@ -48,9 +48,9 @@
 
                 <div class='complex_filter_wrapper'>
                     <div class='complex_filter'>
-                        <div class="complex_filter_item">
+                        <form method="get" action="#" class="complex_filter_item">
                             <div class="title">1 этаж</div>
-                            <form class="complex_search search_block" method="get" action="#">
+                            <div class="complex_search search_block">
                                 <input type="text" name="search_complex" id="search_complex"
                                     placeholder="Название отдела" value=""
                                     class="complex_search_input search_block_input">
@@ -59,7 +59,7 @@
                                         <use xlink:href="./assets/imgs/sprite.svg#search"></use>
                                     </svg>
                                 </a>
-                            </form>
+                            </div>
                             <div class="complex_dropdown">
                                 <button type="button" class="complex_dropdown_btn">
                                     <span class="complex_dropdown_label">Каталог</span>
@@ -73,7 +73,7 @@
                                     <li class="complex_dropdown_item" data-sort="catalog_2">Каталог 2</li>
                                 </ul>
                             </div>
-                        </div>
+                        </form>
                         <div class='complex_filter_item'>
                             <div class='complex_filter_shops'>
                                 <div class='complex_filter_shops_col' data-shop="scheme-content_1">

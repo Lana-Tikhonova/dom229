@@ -222,13 +222,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // имитация стрелок input type="number"
-    $('.calculator__input-arrow_top').on('click', function () {
-        let input = $(this).closest('.calculator__input-number').find('input');
+    $('.input-number-arrow_top').on('click', function () {
+        let input = $(this).closest('.input-number').find('input');
         input.val(parseInt(input.val()) + 1).trigger('input');
     });
 
-    $('.calculator__input-arrow_bottom').on('click', function () {
-        let input = $(this).closest('.calculator__input-number').find('input');
+    $('.input-number-arrow_bottom').on('click', function () {
+        let input = $(this).closest('.input-number').find('input');
         let min = parseInt(input.attr('min'));
         let newVal = parseInt(input.val()) - 1;
 
@@ -744,61 +744,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }).overlayScrollbars();
 
 
-    const mapButtons = document.querySelectorAll('.scheme_tippy_btn');
+    // const mapButtons = document.querySelectorAll('.scheme_tippy_btn');
 
-    mapButtons.forEach(btn => {
-        btn.addEventListener('mouseenter', function () {
-            const shopId = this.getAttribute('data-template');
+    // mapButtons.forEach(btn => {
+    //     btn.addEventListener('mouseenter', function () {
+    //         const shopId = this.getAttribute('data-template');
 
-            const targetItems = document.querySelectorAll(`.complex_filter_shops_col[data-shop="${shopId}"]`);
+    //         const targetItems = document.querySelectorAll(`.complex_filter_shops_col[data-shop="${shopId}"]`);
 
-            document.querySelectorAll('.complex_filter_shops_col').forEach(el => {
-                el.classList.remove('is-highlighted');
-            });
+    //         document.querySelectorAll('.complex_filter_shops_col').forEach(el => {
+    //             el.classList.remove('is-highlighted');
+    //         });
 
-            if (targetItems.length > 0) {
-                // подсвечиваем все найденные блоки
-                targetItems.forEach(item => item.classList.add('is-highlighted'));
+    //         if (targetItems.length > 0) {
+    //             // подсвечиваем все найденные блоки
+    //             targetItems.forEach(item => item.classList.add('is-highlighted'));
 
-                // скроллим к первому из найденных
-                if (shopsScrollbar) {
-                    shopsScrollbar.scroll(targetItems[0], 500, "swing");
-                }
-            }
-        });
-    });
+    //             // скроллим к первому из найденных
+    //             if (shopsScrollbar) {
+    //                 shopsScrollbar.scroll(targetItems[0], 500, "swing");
+    //             }
+    //         }
+    //     });
+    // });
 
     // кастомный селект в комплексе
-    const $complexDropdown = $('.complex_dropdown');
-    const $complexDropdownBtn = $complexDropdown.find('.complex_dropdown_btn');
-    const $complexDropdownList = $complexDropdown.find('.complex_dropdown_list');
-    const $complexDropdownLabel = $complexDropdown.find('.complex_dropdown_label');
-
-    $complexDropdownBtn.on('click', function (e) {
+    $('.complex_dropdown_btn').on('click', function (e) {
         e.stopPropagation();
-        $complexDropdownList.toggleClass('is-active');
-        $complexDropdownBtn.toggleClass('is-active');
-    });
 
+        const $container = $(this).closest('.complex_dropdown');
+        const $list = $container.find('.complex_dropdown_list');
+
+        $('.complex_dropdown_list').not($list).removeClass('is-active');
+        $('.complex_dropdown_btn').not($(this)).removeClass('is-active');
+
+
+        $list.toggleClass('is-active');
+        $(this).toggleClass('is-active');
+    });
 
     $('.complex_dropdown_item').on('click', function () {
         const text = $(this).text();
-        const val = $(this).data('sort');
+        const $container = $(this).closest('.complex_dropdown');
 
-        $('.complex_dropdown_item').removeClass('active');
+        $container.find('.complex_dropdown_item').removeClass('active');
         $(this).addClass('active');
 
-        $complexDropdownLabel.text(text.toLowerCase());
+        $container.find('.complex_dropdown_label').text(text);
 
-        $complexDropdownList.removeClass('is-active');
-        $complexDropdownBtn.removeClass('is-active');
+        $container.find('.complex_dropdown_list').removeClass('is-active');
+        $container.find('.complex_dropdown_btn').removeClass('is-active');
     });
 
     $(document).on('click', function () {
-        $complexDropdownList.removeClass('is-active');
-        $complexDropdownBtn.removeClass('is-active');
+        $('.complex_dropdown_list').removeClass('is-active');
+        $('.complex_dropdown_btn').removeClass('is-active');
     });
-
 
     // pакрываем инфу
     $('.complex_scheme_info_head').on('click', function () {
@@ -806,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // логика карты свг
-    const isMobile = () => window.innerWidth <= 768;
+    const isMobile = () => window.innerWidth < 992;
     // const initialScale = isMobile() ? 2 : 1;
 
     let panzoomInstance = null;
@@ -829,12 +830,28 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomInBtn.onclick = panzoomInstance.zoomIn;
     zoomOutBtn.onclick = panzoomInstance.zoomOut;
 
+    // прокрутка списка
+    function scrollToShopItems(shopId) {
+        const targetItems = document.querySelectorAll(`.complex_filter_shops_col[data-shop="${shopId}"]`);
+
+        document.querySelectorAll('.complex_filter_shops_col').forEach(el => {
+            el.classList.remove('is-highlighted');
+        });
+
+        if (targetItems.length > 0 && shopsScrollbar) {
+            targetItems.forEach(item => item.classList.add('is-highlighted'));
+
+            // скроллим к первой из списка
+            shopsScrollbar.scroll(targetItems[0], 500, "swing");
+        }
+    }
+
     // всплывашка при наведении на свг
     let currentTippy = null;
 
     tippy('.scheme_tippy_btn', {
         trigger: isMobile() ? 'click' : 'mouseenter focus',
-        // trigger: 'click',
+        trigger: 'click',
         content(reference) {
             const id = reference.getAttribute('data-template');
             const template = document.getElementById(id);
@@ -844,7 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arrow: false,
         theme: 'scheme_tooltip',
         animation: 'scale',
-        placement: 'right',
+        placement: isMobile() ? 'bottom' : 'right',
         maxWidth: '272px',
         interactive: true,
         duration: [400, 200],
@@ -856,9 +873,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentTippy.hide();
             }
             currentTippy = instance;
-            const tippyBox = instance.popper;
+
+
+            // слайдер в открытом тултипе
+            const sliderEl = instance.popper.querySelector('.tooltip_slider');
+
+            if (sliderEl && !sliderEl.swiper) {
+                new Swiper(sliderEl, {
+                    slidesPerView: 1,
+                    spaceBetween: 12,
+                    watchSlidesProgress: true,
+                    observeParents: true,
+                    observer: true,
+                    pagination: {
+                        el: instance.popper.querySelector(".swiper-pagination"),
+                        clickable: true,
+                        // dynamicBullets: true,
+                    },
+                });
+            }
+
+            // прокрутка списка
+            const shopId = instance.reference.getAttribute('data-template');
+            scrollToShopItems(shopId);
         },
         onHide(instance) {
+            // удаляем слайдер
+            const sliderEl = instance.popper.querySelector('.tooltip_slider');
+            if (sliderEl && sliderEl.swiper) {
+                sliderEl.swiper.destroy();
+            }
+
             if (currentTippy === instance) {
                 currentTippy = null;
             }
