@@ -3956,6 +3956,8 @@ label {
 	&__input-number {
 		width: 100%;
 		margin: 0 auto;
+		height: 80px;
+
 	}
 
 	&__val {
@@ -4002,7 +4004,6 @@ label {
 .input-number {
 	position: relative;
 	width: 144px;
-	height: 80px;
 	padding: 24px 16px;
 	background: #fff;
 	border-radius: 16px;
@@ -4107,8 +4108,13 @@ label {
 
 	.calculator__select__dropdown-header,
 	.calculator__input-number {
-		padding: 16px;
 		height: 58px;
+		width: 100%;
+	}
+
+	.input-number {
+		padding: 16px;
+
 	}
 
 	.calculator__total-block {

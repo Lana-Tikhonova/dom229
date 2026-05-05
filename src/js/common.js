@@ -851,7 +851,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tippy('.scheme_tippy_btn', {
             trigger: isMobile() ? 'click' : 'mouseenter focus',
-            trigger: 'click',
+            // trigger: 'click',
             content(reference) {
                 const id = reference.getAttribute('data-template');
                 const template = document.getElementById(id);
